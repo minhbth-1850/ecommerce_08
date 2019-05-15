@@ -2,9 +2,9 @@ en:
   logo: "Sun Bear Shop"
   label:
     welcome: "Let's shop with %{logo}!"
+  link:
     home: "Home"
     help: "Help"
-  link:
     login: "Login"
     signup: "Sign Up Now!"
     create: "Create"
@@ -21,3 +21,5 @@ en:
     address: "Address"
   flash:
     nil_object: "%{name} not found!"
+    login_plz: "Please login before!"
+    login_fail: "Login Fail!"

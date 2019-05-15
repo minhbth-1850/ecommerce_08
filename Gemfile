@@ -8,6 +8,7 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap-sass"
 gem "coffee-rails", "~> 4.2"
 gem "config"
+gem "faker", "1.7.3"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails", "4.3.1"
 gem "mysql2", ">= 0.4.4", "< 0.6.0"
