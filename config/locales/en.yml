@@ -2,6 +2,7 @@ en:
   logo: "Sun Bear Shop"
   label:
     welcome: "Let's shop with %{logo}!"
+    edit: "Edit Profile"
   link:
     home: "Home"
     help: "Help"
@@ -11,6 +12,7 @@ en:
     account: "Account"
     profile: "Profile"
     setting: "Setting"
+    save: "Save"
   form:
     name: "Name"
     email: "Email"
@@ -23,3 +25,4 @@ en:
     nil_object: "%{name} not found!"
     login_plz: "Please login before!"
     login_fail: "Login Fail!"
+    profile_update: "Profile updated!"

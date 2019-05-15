@@ -11,7 +11,7 @@ class User < ApplicationRecord
     length: {maximum: Settings.users.email_length},
     format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   validates :name, presence: true, length: {maximum: Settings.users.name_length}
-  validates :password, presence: true,
+  validates :password, presence: true, allow_nil: true,
     length: {minimum: Settings.users.pass_min_length}
   validates :phone, presence: true, numericality: true,
     length: {minimum: Settings.users.phone_min,
@@ -22,12 +22,12 @@ class User < ApplicationRecord
 
   class << self
     def digest string
-    cost = if ActiveModel::SecurePassword.min_cost
-             BCrypt::Engine::MIN_COST
-           else
-             BCrypt::Engine.cost
-           end
-    BCrypt::Password.create string, cost: cost
+      cost = if ActiveModel::SecurePassword.min_cost
+               BCrypt::Engine::MIN_COST
+             else
+               BCrypt::Engine.cost
+             end
+      BCrypt::Password.create string, cost: cost
     end
 
     def new_token
