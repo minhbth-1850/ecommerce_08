@@ -1,0 +1,22 @@
+<h1>Products</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th width="8%"> </th>
+      <th width="5%">ID</th>
+      <th width="10%">Product</th>
+      <th width="20%">Info</th>
+      <th width="10%">Category</th>
+      <th width="10%">Quantity</th>
+      <th width="15%">Price</th>
+      <th width="5%">Rank</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "product_item", collection: @products %>
+  </tbody>
+</table>
+
+

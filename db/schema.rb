@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_26_011902) do
+ActiveRecord::Schema.define(version: 2019_05_16_031123) do
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "fk_rails_82f48f7407"
+  end
+
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "info"
+    t.string "image"
+    t.integer "price", default: 0
+    t.float "rank", default: 0.0
+    t.integer "quantity", default: 0
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -23,4 +44,5 @@ ActiveRecord::Schema.define(version: 2019_04_26_011902) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "categories", "categories", column: "parent_id"
 end

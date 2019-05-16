@@ -1,0 +1,36 @@
+<%= form_for :product do |f| %>
+  <%= render "shared/error_messages", object: @product %>
+
+  <div class="col-md-3">
+    <%= image_tag("default_img.png", size: "250x250") %>
+    <%= f.file_field :image, class: "form-control-file" %>
+  </div>
+  <div class="col-md-6 col-md-offset-1">
+
+    <%= f.label :name, t("label.name") %>
+    <%= f.text_field :name, class: "form-control" %>
+
+    <%= f.label :info, "Infomation" %>
+    <%= f.text_area :info, class: "form-control" %>
+
+    <div class="form-group">
+      <%= f.label :category, "Category" %>
+      <%= f.select(:category_id, Category.all.collect{|c| [ c.name, c.id ]}, {include_blank: true}, class: "form-control") %>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+      <%= f.label :quantity, "Quantity" %>
+      <%= f.number_field :quantity, class: "form-control" %>
+      </div>
+      <div class="col-md-6 col-md-offset-1">
+        <%= f.label :price, "Price" %>
+        <div class="form-inline">
+          <%= f.number_field :price, class: "form-control" %>
+          <%= f.label :quantity, ".VND" %>
+        </div>
+      </div>
+    </div>
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  </div>
+<% end %>

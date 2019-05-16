@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
+    get "/add_product", to: "products#new"
+    post "/add_product", to: "products#create"
 
     resources :users
+    resources :products
   end
 end
