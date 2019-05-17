@@ -1,28 +1,29 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to t("link.logo"), root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to t("link.home"), root_path %></li>
-        <li><%= link_to t("link.help"), help_path %></li>
-        <% if logged_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= t("link.account") %><b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to t("link.profile"), current_user %></li>
-              <li><%= link_to t("link.setting"), edit_user_path(current_user) %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to t("link.logout"), logout_path, method: :delete %>
-              </li>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to t("link.login"), login_path %></li>
-        <% end %>
+<div class="navbar navbar-inverse" role="navigation">
+<div class="container">
+
+<div class="row categories">
+
+    <div class="container" id="horizontal">
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="">ELECTRONICS</a></li>
+        <li><a href="">AUTOMOTIVES</a></li>
+        <li><a href="">HOME & DECOR</a></li>
       </ul>
-    </nav>
-  </div>
-</header>
+      <ul class="nav navbar-nav navbar-right">
+        <li >
+          <form method="post" action="test">
+          <input type="text" name="search"  style="padding:5px;  border:1px solid #eee; width: 150px"/>
+          <button type="submit" class="btn btn-danger">SEARCH</button>
+           </form>
+        </li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      </ul>
+    </div>
+
+</div>
+
+
+
+</div>
+</div>
