@@ -8,6 +8,8 @@ class Product < ApplicationRecord
   validates :price, numericality: {greater_than_or_equal_to: 0,  only_integer: true}
   validate :image_size
 
+  scope :load_category, ->{includes(:category)}
+
   def get_price
     number_to_currency price, unit: "VND "
   end

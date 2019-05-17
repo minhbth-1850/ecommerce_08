@@ -1,5 +1,17 @@
 <h1>Products</h1>
 
+<div class="container">
+  <ul class="list-inline">
+    <li><%= label :category, "Find by: " %></li>
+    <li>
+     <%= form_tag("/products", method: :GET, id: "form_filter") do %>
+      <%= select_tag :category_id, options_for_select(Category.all.collect{|x| [x.name,x.id]}, params[:category_id]), {include_blank: "All"} %>
+     <% end %>
+    </li>
+    <li><%= label :result, "There are #{@products.total_entries} products." %></li>
+  </ul>
+</div>
+
 <table class="table">
   <thead>
     <tr>
@@ -19,4 +31,6 @@
   </tbody>
 </table>
 
+<%= will_paginate %>
 
+<%= javascript_include_tag "load_products.js" %>
