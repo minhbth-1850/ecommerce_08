@@ -1,6 +1,5 @@
-<% provide(:title, "Home") %>
-<h1>Sample App</h1>
-<p>
-  This is the home page for the
-  <%= link_to t("label.rail_tuts"), "https://www.railstutorial.org/" %>
-</p>
+<div class="center jumbotron">
+  <h1><%= t("label.welcome", logo: t("logo")) %></h1>
+  <%= link_to t("link.signup"), signup_path, class: "btn btn-lg btn-primary" %>
+</div>
+

@@ -1,4 +1,23 @@
 vi:
+  logo: "Sun Bear Shop"
   label:
-    rail_tuts: "Bài hướng dẫn Ruby On Rails"
-    rail_help: "Phần trợ giúp của Rails Tutorial"
+    welcome: "Hya mua sam cung %{logo}!"
+    home: "Trang chu"
+    help: "Tro giup"
+  link:
+    login: "Dang nhap"
+    signup: "Dang ki"
+    create: "Tao"
+    account: "Tai khoan"
+    profile: "Ca nhan"
+    setting: "Ca hinh"
+  form:
+    name: "Ten"
+    email: "Email"
+    pass: "Mat khau"
+    pass_confirm: "Nhap lai mat khau"
+    remember: "Ghi nho"
+    phone: "So dien thoai"
+    address: "Dia chi"
+  flash:
+    nil_object: "%{name} khong duoc tim thay!"
