@@ -4,3 +4,5 @@ users:
   pass_min_length: 6
   phone_min: 10
   phone_max: 15
+conditions:
+  checked: "1"

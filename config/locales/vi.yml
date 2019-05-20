@@ -2,9 +2,9 @@ vi:
   logo: "Sun Bear Shop"
   label:
     welcome: "Hya mua sam cung %{logo}!"
+  link:
     home: "Trang chu"
     help: "Tro giup"
-  link:
     login: "Dang nhap"
     signup: "Dang ki"
     create: "Tao"
@@ -21,3 +21,5 @@ vi:
     address: "Dia chi"
   flash:
     nil_object: "%{name} khong duoc tim thay!"
+    login_plz: "Vui long dang nhap!"
+    login_fail: "Dang nhap khong thanh cong!"
