@@ -2,6 +2,7 @@ vi:
   logo: "Sun Bear Shop"
   label:
     welcome: "Hya mua sam cung %{logo}!"
+    edit: "Cap nhat"
   link:
     home: "Trang chu"
     help: "Tro giup"
@@ -10,7 +11,8 @@ vi:
     create: "Tao"
     account: "Tai khoan"
     profile: "Ca nhan"
-    setting: "Ca hinh"
+    setting: "Cau hinh"
+    save: "Luu lai"
   form:
     name: "Ten"
     email: "Email"
@@ -23,3 +25,4 @@ vi:
     nil_object: "%{name} khong duoc tim thay!"
     login_plz: "Vui long dang nhap!"
     login_fail: "Dang nhap khong thanh cong!"
+    profile_update: "Cap nhat thanh cong!"
