@@ -1,18 +1,40 @@
 vi:
+  sort_option:
+    created_at: "Moi nhat"
+    price: "Gia"
+    rank: "Xep hang"
   logo: "Sun Bear Shop"
+  info:
+    email: "sunbear@example.com"
+    phone: "+ 33 12 14 15 16"
+    created_by: "duoc tao boi Naruto-Uzumaki voi"
+    version: "v 1.0"
+    detail: "At Sun, we strive to provide a better choice for everyone.
+      We are obsessed with making awesome things with awesome people."
+    back_top: "Tro ve dau"
   label:
     welcome: "Hya mua sam cung %{logo}!"
     edit: "Cap nhat"
+    category: "Danh muc"
+    sort: "Sap xep"
+    search: "Tim kiem"
+    product_all: "Tat ca"
+    product_hot: "Thinh hanh"
+    contact: "Lien he"
+    about: "Ve chung toi"
+    all: "Tat ca"
   link:
     home: "Trang chu"
     help: "Tro giup"
     login: "Dang nhap"
+    logout: "Dang xuat"
     signup: "Dang ki"
     create: "Tao"
     account: "Tai khoan"
     profile: "Ca nhan"
     setting: "Cau hinh"
     save: "Luu lai"
+    cart: "Gio hang"
   form:
     name: "Ten"
     email: "Email"
@@ -26,3 +48,8 @@ vi:
     login_plz: "Vui long dang nhap!"
     login_fail: "Dang nhap khong thanh cong!"
     profile_update: "Cap nhat thanh cong!"
+  product:
+    unit: "$"
+    amount:
+      one: "Co %{count} san pham."
+      other: "Co %{count} san pham."

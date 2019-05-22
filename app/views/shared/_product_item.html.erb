@@ -1,0 +1,41 @@
+<div class="col-md-3">
+  <div class="product-grid3">
+    <div class="product-image3">
+      <%= link_to (image_tag product_item.image), "#" %>
+      <ul class="social">
+        <li>
+          <%= link_to "#" do %>
+            <i class="fa fa-shopping-bag"></i>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+            <i class="fa fa-shopping-cart"></i>
+          <% end %>
+        </li>
+      </ul>
+      <span class="product-new-label">New</span>
+    </div>
+    <div class="product-content">
+      <h3 class="title">
+        <%= product_item.name %>
+      </h3>
+      <div class="price">
+        <%= number_to_price product_item.price %>
+        <span><%= fake_sale_price product_item.price %></span>
+      </div>
+      <ul class="rating">
+        <% starlight = product_item.get_rank %>
+        <% 5.times do |n| %>
+          <% if n + 0.5 == starlight %>
+            <li class="fa fa-star-half-o"></li>
+          <% elsif n < starlight %>
+            <li class="fa fa-star"></li>
+          <% else %>
+            <li class="fa fa-star-o"></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
