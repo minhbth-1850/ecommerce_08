@@ -23,6 +23,13 @@ en:
     contact: "Contact"
     about: "About"
     all: "All"
+    image: "Image"
+    product: "Product"
+    info: "Infomation"
+    quantity: "Quantity"
+    total: "Total"
+    price: "Price"
+    shoping: "Shoping Cart"
   link:
     home: "Home"
     help: "Help"
@@ -35,6 +42,8 @@ en:
     setting: "Setting"
     save: "Save"
     cart: "Cart"
+    continue: "Continue Shoping"
+    checkout: "Check out"
   form:
     name: "Name"
     email: "Email"
@@ -43,11 +52,13 @@ en:
     remember: "Remember"
     phone: "Phone Number"
     address: "Address"
+    pay: "Pay Now"
   flash:
     nil_object: "%{name} not found!"
     login_plz: "Please login before!"
     login_fail: "Login Fail!"
     profile_update: "Profile updated!"
+    thank_pay: "Thank you for shoping!"
   product:
     unit: "$"
     amount:

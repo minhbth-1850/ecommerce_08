@@ -17,7 +17,7 @@ module ProductsHelper
 
   def load_params_option sort_id
     option = SORT_OPTION.key(sort_id)
-    option ||= SORT_OPTION.frist[0]
+    option || SORT_OPTION.frist[0]
   end
 
   def select_products category_id, sort_id, per_page

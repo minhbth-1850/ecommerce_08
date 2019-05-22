@@ -1,0 +1,17 @@
+<tr>
+  <td><%= image_tag product_cart.image, size: "50x50" %></td>
+  <td><%= product_cart.name %></td>
+  <td class="text-left"><%= product_cart.info %></td>
+  <td><%= product_cart.category.name %></td>
+  <td class="text-left"><%= number_to_price(product_cart.price) %></td>
+  <td class="text-center"><%= product_cart.quantity %></td>
+  <td class="text-left"><%= number_to_price(product_cart.price * product_cart.quantity) %></td>
+  <td class="text-right">
+    <%= form_tag cart_path, method: :DELETE do |f| %>
+      <%= hidden_field_tag :product_id, product_cart.id %>
+      <%= button_tag "", type: :submit, class: "btn btn-danger" do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
+    <% end %>
+  </td>
+</tr>
