@@ -6,3 +6,7 @@ users:
   phone_max: 15
 conditions:
   checked: "1"
+products:
+  per_page: 12
+  hot_page: 8
+  fake_sale: 1.5

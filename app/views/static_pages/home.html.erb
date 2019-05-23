@@ -1,4 +1,61 @@
-<div class="center jumbotron">
-  <h1><%= t("label.welcome", logo: t("logo")) %></h1>
-  <%= link_to t("link.signup"), signup_path, class: "btn btn-lg btn-primary" %>
+<div class="container">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag "https://i.pinimg.com/originals/a0/04/7c/a0047c6fbe7355ce655176da3b4cba5e.jpg", class: "d-block w-100" %>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag "http://www.jessicabriones.com/includes/templates/qboeBQTN/images/banner.jpg", class: "d-block w-100" %>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag "https://dkemhji6i1k0x.cloudfront.net/000_clients/84990/page/84990F5y57DsP.jpg", class: "d-block w-100" %>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+  </div>
+</div>
+
+<hr>
+
+<%= form_tag select_path, method: :GET do %>
+  <div class="container">
+    <div class="row">
+      <form class="form-inline">
+        <div class="col-md-4">
+          <label><%= t "label.category" %> :</label>
+          <%= select_tag :category_id, options_for_select(load_categories, params[:category_id]),
+            {include_blank: t("label.all"), class: "form-control form-select"} %>
+        </div>
+        <div class="col-md-3">
+          <label><%= t "label.sort" %> :</label>
+          <%= select_tag :sort_id, options_for_select(load_options, params[:sort_id]), {class: "form-control form-select"} %>
+        </div>
+        <div class="col-md-2">
+          <%= submit_tag t("label.search"), class: "btn btn-primary" %>
+        </div>
+        <label><%= t "product.amount", count: @products.total_entries %></label>
+      </form>
+    </div>
+    </br>
+  </div>
+<% end %>
+
+<div class="container">
+  <% if @trend_products.any? %>
+    <h3 class="h3"><%= t("label.product_hot") %></h3>
+    <div class="row">
+      <%= render partial: "shared/product_item", collection: @trend_products %>
+    </div>
+    <hr>
+  <% end %>
+  <h3 class="h3"><%= t("label.product_all") %></h3>
+  <div class="row">
+    <%= render partial: "shared/product_item", collection: @products %>
+  </div>
+  <div class="d-flex justify-content-center"><%= will_paginate @products %></div>
 </div>

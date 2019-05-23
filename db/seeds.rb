@@ -1,7 +1,56 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+categories = []
+5.times do |n|
+  name = Faker::Name.name + "-#{n+1}"
+  parent_id = n > 0 ? categories[n - 1].id : nil
+  categories << Category.create!(name: name,
+                            parent_id: parent_id)
+end
+
+products = []
+99.times do |n|
+  name  = Faker::Name.name
+  info = Faker::Company.name
+  quantity = Faker::Number.between(10, 100)
+  price = Faker::Number.between(10, 100)
+  category = categories.sample.id
+  image = "http://bestjquery.com/tutorial/product-grid/demo4/images/img-#{Faker::Number.between(1, 8)}.jpg"
+  rank = Faker::Number.between(10, 50).to_f / 10
+  products << Product.create!(name: name,
+                              info: info,
+                              quantity: quantity,
+                              price: price,
+                              category_id: category,
+                              image: image,
+                              rank: rank)
+end
+
+users = []
+99.times do |n|
+  name  = Faker::Name.name
+  email = "user-#{n+1}@gmail.com"
+  password = "password"
+  phone = "0132467981"
+  address = "FHome, Da Nang"
+  users << User.create!(name: name,
+                        email: email,
+                        password: password,
+                        password_confirmation: password,
+                        phone: phone,
+                        address: address)
+end
+
+orders = []
+5.times do |n|
+  user_id = users.sample.id
+  orders << Order.create!(user_id: user_id)
+end
+
+order_products = []
+20.times do |n|
+  order_id = orders.sample.id
+  product_id = products.sample.id
+  quantity = Faker::Number.between(1, 10)
+  order_products << OrderProduct.create!(order_id: order_id,
+                                          product_id: product_id,
+                                          quantity: quantity)
+end

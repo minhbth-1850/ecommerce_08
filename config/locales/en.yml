@@ -1,18 +1,40 @@
 en:
+  sort_option:
+    created_at: "Created"
+    price: "Price"
+    rank: "Review"
   logo: "Sun Bear Shop"
+  info:
+    email: "sunbear@example.com"
+    phone: "+ 33 12 14 15 16"
+    created_by: "created by Naruto-Uzumaki with"
+    version: "v 1.0"
+    detail: "At Sun, we strive to provide a better choice for everyone.
+      We are obsessed with making awesome things with awesome people."
+    back_top: "Back to top"
   label:
     welcome: "Let's shop with %{logo}!"
     edit: "Edit Profile"
+    category: "Category"
+    sort: "Sort by"
+    search: "Search"
+    product_all: "All Products"
+    product_hot: "Hot Trend"
+    contact: "Contact"
+    about: "About"
+    all: "All"
   link:
     home: "Home"
     help: "Help"
     login: "Login"
+    logout: "Logout"
     signup: "Sign Up Now!"
     create: "Create"
     account: "Account"
     profile: "Profile"
     setting: "Setting"
     save: "Save"
+    cart: "Cart"
   form:
     name: "Name"
     email: "Email"
@@ -26,3 +48,8 @@ en:
     login_plz: "Please login before!"
     login_fail: "Login Fail!"
     profile_update: "Profile updated!"
+  product:
+    unit: "$"
+    amount:
+      one: "There are %{count} product."
+      other: "There are %{count} products."
