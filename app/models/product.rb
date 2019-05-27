@@ -10,4 +10,8 @@ class Product < ApplicationRecord
   def get_rank
     (rank * 2).round / 2.0
   end
+
+  def get_total_price
+    price * quantity
+  end
 end

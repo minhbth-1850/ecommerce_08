@@ -23,6 +23,13 @@ vi:
     contact: "Lien he"
     about: "Ve chung toi"
     all: "Tat ca"
+    image: "Anh"
+    product: "San pham"
+    info: "Thong tin"
+    quantity: "So luong"
+    total: "Tong"
+    price: "Gia"
+    shoping: "Gio hang"
   link:
     home: "Trang chu"
     help: "Tro giup"
@@ -35,6 +42,8 @@ vi:
     setting: "Cau hinh"
     save: "Luu lai"
     cart: "Gio hang"
+    continue: "Tiep tuc mua hang"
+    checkout: "Thanh toan"
   form:
     name: "Ten"
     email: "Email"
@@ -43,11 +52,13 @@ vi:
     remember: "Ghi nho"
     phone: "So dien thoai"
     address: "Dia chi"
+    pay: "Thanh toan"
   flash:
     nil_object: "%{name} khong duoc tim thay!"
     login_plz: "Vui long dang nhap!"
     login_fail: "Dang nhap khong thanh cong!"
     profile_update: "Cap nhat thanh cong!"
+    thank_pay: "Cam on ban da mua hang!"
   product:
     unit: "$"
     amount:

@@ -1,0 +1,51 @@
+<hr>
+<div class="row justify-content-md-center">
+  <h1><%= t("label.shoping") %></h1>
+</div>
+
+<p><%= t "product.amount", count: @products.size %></p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th width="5%"><%= t("label.image") %></th>
+      <th width="20%"><%= t("label.product") %></th>
+      <th width="20%"><%= t("label.info") %></th>
+      <th width="15%"><%= t("label.category") %></th>
+      <th width="10%"><%= t("label.price") %></th>
+      <th width="10%"><%= t("label.quantity") %></th>
+      <th width="20%"><%= t("label.total") %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "product_cart", collection: @products %>
+  </tbody>
+</table>
+<hr>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= link_to root_path, class: "btn btn-warning" do %>
+        < <%= t("link.continue") %>
+      <% end %>
+    </div>
+    <div class="col-md-7">
+      <div class="hidden-xs text-right">
+        <strong>
+          <%= t("label.total") %>
+          <%= number_to_price get_total_price(@products)%>
+        </strong>
+      </div>
+    </div>
+    <% if @products.any? %>
+      <div class="col-md-2 text-right">
+        <%= link_to "#", class: "btn btn-success" do %>
+          <%= t("link.checkout") %> >
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<hr>

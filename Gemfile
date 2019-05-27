@@ -6,6 +6,7 @@ ruby "2.5.3"
 gem "bcrypt", "3.1.12"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap"
+gem "bootstrap-sass"
 gem "bootstrap-will_paginate"
 gem "coffee-rails", "~> 4.2"
 gem "config"
