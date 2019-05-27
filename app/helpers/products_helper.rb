@@ -1,6 +1,7 @@
 module ProductsHelper
   include ActionView::Helpers::NumberHelper
   SORT_OPTION = {created_at: 0, price: 1, rank: 2}.freeze
+  STAR_RANGE = [5, 4, 3, 2, 1].freeze
 
   def load_options
     SORT_OPTION.map{|k, v| [I18n.t("sort_option")[k], v]}
@@ -8,6 +9,10 @@ module ProductsHelper
 
   def load_categories
     Category.all.map{|x| [x.name, x.id]}
+  end
+
+  def load_range_rate
+    STAR_RANGE.map{|n| [n, n]}
   end
 
   def load_all_products per_page

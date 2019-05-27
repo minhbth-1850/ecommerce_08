@@ -10,3 +10,5 @@ products:
   per_page: 12
   hot_page: 8
   fake_sale: 1.5
+  max_stars: 5
+  round: 2

@@ -30,6 +30,9 @@ vi:
     total: "Tong"
     price: "Gia"
     shoping: "Gio hang"
+    stars: "Stars"
+    review: "Danh gia"
+    enter_review: "Nhap danh gia cua ban..."
   link:
     home: "Trang chu"
     help: "Tro giup"
@@ -53,15 +56,21 @@ vi:
     phone: "So dien thoai"
     address: "Dia chi"
     pay: "Thanh toan"
+    post: "Dang"
   flash:
     nil_object: "%{name} khong duoc tim thay!"
     login_plz: "Vui long dang nhap!"
     login_fail: "Dang nhap khong thanh cong!"
     profile_update: "Cap nhat thanh cong!"
     thank_pay: "Cam on ban da mua hang!"
+    review_success: "Danh gia thanh cong!"
+    review_fail: "Danh gia that bai!"
   product:
     unit: "$"
     amount:
       one: "Co %{count} san pham."
       other: "Co %{count} san pham."
     out_stock: "het hang, chi con %{count}"
+    review:
+      one: "%{count} danh gia"
+      other: "%{count} danh gia"
