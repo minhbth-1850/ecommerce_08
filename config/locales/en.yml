@@ -64,3 +64,4 @@ en:
     amount:
       one: "There are %{count} product."
       other: "There are %{count} products."
+    out_stock: "is out of stock, just %{count} left"
