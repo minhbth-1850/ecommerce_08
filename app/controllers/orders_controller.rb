@@ -1,5 +1,10 @@
 class OrdersController < ApplicationController
-  before_action :logged_in_user, only: %i(new create)
+  before_action :logged_in_user, only: %i(index new create)
+
+  def index
+    @orders = current_user.orders.latest.paginate(page: params[:page],
+      per_page: Settings.cart.per_page)
+  end
 
   def new
     @order = current_user.orders.build(reciever_name: current_user.name,

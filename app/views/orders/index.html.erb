@@ -1,0 +1,19 @@
+<br>
+<div class="row justify-content-md-center">
+  <h1><%= t("label.history") %></h1>
+</div>
+
+<% if @orders.any? %>
+  <%= render @orders %>
+  <div class="row justify-content-md-center">
+    <%= will_paginate @orders %>
+  </div>
+<% else %>
+  </br>
+  <div class="row justify-content-md-center">
+    <%= link_to root_path, class: "btn btn-warning" do %>
+      < <%= t("link.continue") %>
+    <% end %>
+  </div>
+  </br>
+<% end %>
