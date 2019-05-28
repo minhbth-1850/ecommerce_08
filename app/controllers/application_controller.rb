@@ -1,8 +1,17 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
   include ProductsHelper
+  include CartHelper
 
   before_action :set_locale
+
+  def logged_in_user
+    return if logged_in?
+
+    store_location
+    flash[:danger] = t "flash.login_plz"
+    redirect_to login_path
+  end
 
   private
 

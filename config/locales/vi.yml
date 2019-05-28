@@ -64,3 +64,4 @@ vi:
     amount:
       one: "Co %{count} san pham."
       other: "Co %{count} san pham."
+    out_stock: "het hang, chi con %{count}"

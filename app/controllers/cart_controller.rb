@@ -1,6 +1,4 @@
 class CartController < ApplicationController
-  include CartHelper
-
   def shoping
     add_product params[:cart][:product_id]
     respond_to do |format|
@@ -31,7 +29,7 @@ class CartController < ApplicationController
   def load_products orders
     @products = Product.find_ids(orders.keys)
     @products.each do |p|
-      p.quantity = orders[p.id.to_s]
+      p.amount_added = orders[p.id.to_s]
     end
   end
 end

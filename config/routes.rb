@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     get "/payment", to: "cart#checkout"
 
     resources :users
+    resources :orders
   end
 end
