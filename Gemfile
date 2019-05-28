@@ -8,6 +8,7 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap"
 gem "bootstrap-sass"
 gem "bootstrap-will_paginate"
+gem "carrierwave"
 gem "coffee-rails", "~> 4.2"
 gem "config"
 gem "faker", "1.7.3"
@@ -15,6 +16,7 @@ gem "font-awesome-rails"
 gem "jbuilder", "~> 2.5"
 gem "jquery"
 gem "jquery-rails"
+gem "mini_magick", "4.7.0"
 gem "mysql2", ">= 0.4.4", "< 0.6.0"
 gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.3"
@@ -48,6 +50,7 @@ group :test do
 end
 
 group :production do
+  gem "fog"
   gem "pg", "0.20.0"
 end
 
