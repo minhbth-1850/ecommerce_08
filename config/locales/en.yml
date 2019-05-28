@@ -30,6 +30,9 @@ en:
     total: "Total"
     price: "Price"
     shoping: "Shoping Cart"
+    stars: "Stars"
+    review: "Review"
+    enter_review: "Enter your review..."
   link:
     home: "Home"
     help: "Help"
@@ -53,15 +56,21 @@ en:
     phone: "Phone Number"
     address: "Address"
     pay: "Pay Now"
+    post: "Post"
   flash:
     nil_object: "%{name} not found!"
     login_plz: "Please login before!"
     login_fail: "Login Fail!"
     profile_update: "Profile updated!"
     thank_pay: "Thank you for shoping!"
+    review_success: "Review successful!"
+    review_fail: "Review Fail!"
   product:
     unit: "$"
     amount:
       one: "There are %{count} product."
       other: "There are %{count} products."
     out_stock: "is out of stock, just %{count} left"
+    review:
+      one: "%{count} review"
+      other: "%{count} reviews"

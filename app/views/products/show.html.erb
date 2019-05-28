@@ -1,0 +1,64 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="product-grid3">
+        <div class="product-image3">
+          <%= image_tag @product.image, alt: @product.name %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <h1><strong><%= @product.name %></strong></h1>
+      <ul class="rating">
+        <% starlight = @product.get_rank %>
+        <% Settings.products.max_stars.times do |n| %>
+          <% if n + 0.5 == starlight %>
+            <li class="fa fa-star-half-o"></li>
+          <% elsif n < starlight %>
+            <li class="fa fa-star"></li>
+          <% else %>
+            <li class="fa fa-star-o"></li>
+          <% end %>
+        <% end %>
+      </ul>
+      <h5>(<%= t("product.review", count: @product.reviews.count) %>)</h5>
+      <h5><%= @product.info %></h5>
+      <br>
+      <h3>
+        <%= t("label.price") %>:
+        <%= number_to_price @product.price %>
+      </h3>
+      <h5>
+        <%= t("label.quantity") %>:
+        <%= @product.quantity %>
+      </h5>
+      <br>
+      <%= form_for :cart, url: shoping_path, method: :POST, remote: true do |f| %>
+        <div><%= f.hidden_field :product_id, value: @product.id %></div>
+        <%= f.button :submit, class: "btn btn-info" do %>
+          <i class="fa fa-shopping-bag"></i> Add to cart
+        <% end %>
+      <% end %>
+
+      <hr>
+      <%= form_for @review do |f| %>
+        <h3><%= t("label.review") %>:</h3>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <div class="row">
+          <div class="col-md-2">
+            <label><%= t("label.stars") %>:</label>
+            <%= f.select :score, load_range_rate, class: "form-control" %>
+          </div>
+          <div class="col-md-8">
+            <%= f.text_area :content, placeholder: t("label.enter_review"), class: "md-textarea form-control" %>
+          </div>
+          <div class="col-md-2">
+             <%= f.submit t("form.post"), class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
