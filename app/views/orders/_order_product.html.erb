@@ -1,5 +1,5 @@
 <tr>
-  <td><%= link_to (image_tag order_product.image_url, size: Settings.cart.size_img),
+  <td><%= link_to (image_tag order_product.product.image_url, size: Settings.cart.size_img),
     order_product.product %></td>
   <td><%= order_product.name %></td>
   <td><%= order_product.info %></td>

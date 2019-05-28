@@ -1,4 +1,7 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "from@example.com"
+  add_template_helper ProductsHelper
+  add_template_helper OrdersHelper
+
+  default from: "noreply@gmail.com"
   layout "mailer"
 end

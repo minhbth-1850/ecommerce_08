@@ -19,6 +19,7 @@ class OrdersController < ApplicationController
 
     if @order.save
       clear_cart
+      send_emails
       flash[:success] = t "flash.thank_pay"
       redirect_to root_path
     else
@@ -43,5 +44,10 @@ class OrdersController < ApplicationController
     @order.order_products.each do |placement|
       @order.total_price += placement.product.price * placement.quantity
     end
+  end
+
+  def send_emails
+    UserMailer.order_email(current_user, @order).deliver_now
+    UserMailer.admin_email(current_user, @order).deliver_now
   end
 end

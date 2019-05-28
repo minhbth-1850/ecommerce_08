@@ -85,3 +85,7 @@ en:
     review:
       one: "%{count} review"
       other: "%{count} reviews"
+  email:
+    order: "Order mail"
+    request: "Request order from %{name}"
+    check_order: "Check Order"
