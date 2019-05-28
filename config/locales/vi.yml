@@ -33,6 +33,8 @@ vi:
     stars: "Stars"
     review: "Danh gia"
     enter_review: "Nhap danh gia cua ban..."
+    history: "Lich su"
+    receipt: "Hoa don"
   link:
     home: "Trang chu"
     help: "Tro giup"

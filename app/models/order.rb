@@ -11,6 +11,8 @@ class Order < ApplicationRecord
              maximum: Settings.users.phone_max}
   validate :enough_product
 
+  scope :latest, ->{order(updated_at: :DESC)}
+
   private
 
   def enough_product

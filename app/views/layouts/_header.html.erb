@@ -38,6 +38,7 @@
             <div class="dropdown-menu">
               <%= link_to t("link.profile"), current_user, class: "dropdown-item" %>
               <%= link_to t("link.setting"), edit_user_path(current_user), class: "dropdown-item" %>
+              <%= link_to t("label.history"), orders_path, class: "dropdown-item" %>
               <%= link_to t("link.logout"), logout_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>

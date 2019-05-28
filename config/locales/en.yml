@@ -33,6 +33,8 @@ en:
     stars: "Stars"
     review: "Review"
     enter_review: "Enter your review..."
+    history: "History"
+    receipt: "Receipt"
   link:
     home: "Home"
     help: "Help"
