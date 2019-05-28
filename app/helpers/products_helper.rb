@@ -17,6 +17,7 @@ module ProductsHelper
 
   def load_all_products per_page
     Product.order_option(:created_at)
+           .includes(:category)
            .paginate(page: params[:page], per_page: per_page)
   end
 

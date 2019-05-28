@@ -54,3 +54,12 @@ order_products = []
                                           product_id: product_id,
                                           quantity: quantity)
 end
+
+# user admin
+User.create!(name: "naruto",
+             email: "naruto@gmail.com",
+             password: "123456",
+             password_confirmation: "123456",
+             phone: "0132467981",
+             address: "Leaf Village",
+             role: 1)

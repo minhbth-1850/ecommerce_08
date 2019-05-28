@@ -1,0 +1,34 @@
+<br>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <h1><%= t("label.product") %></h1>
+  </div>
+  <div class="row">
+    <%= link_to t("link.add_product"), new_product_path, class: "btn btn-info" %>
+    <%= link_to t("link.add_menu"), new_category_path, class: "form-select btn btn-info" %>
+  </div>
+  </br>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="5%">ID</th>
+          <th width="5%"><%= t("label.image") %></th>
+          <th width="20%"><%= t("label.product") %></th>
+          <th width="20%"><%= t("label.info") %></th>
+          <th width="20%"><%= t("label.category") %></th>
+          <th width="10%"><%= t("label.price") %></th>
+          <th width="5%"><%= t("label.quantity") %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @products %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row justify-content-md-center">
+    <%= will_paginate %>
+  </div>
+</div>
