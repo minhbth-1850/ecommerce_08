@@ -1,0 +1,19 @@
+<tr>
+  <td><%= counter %></td>
+  <td><%= link_to (image_tag product.image, size: Settings.cart.size_img), product %></td>
+  <td><%= product.name %></td>
+  <td><%= product.info %></td>
+  <td><%= product.category.name %></td>
+  <td class="text-left"><%= number_to_price(product.price) %></td>
+  <td class="text-center"><%= product.quantity %></td>
+  <td class="text-right">
+    <%= link_to edit_product_path(product), class: "btn btn-warning" do %>
+      <i class="fa fa-edit"></i>
+    <% end %>
+    <%= link_to product, method: :DELETE, data: {confirm: t("flash.you_sure")},
+      class: "btn btn-danger" do %>
+      <i class="fa fa-trash"></i>
+    <% end %>
+  </td>
+</tr>
+

@@ -21,7 +21,8 @@ products = []
                               price: price,
                               category_id: category,
                               image: image,
-                              rank: rank)
+                              rank: rank,
+                              activated: true)
 end
 
 users = []
@@ -42,7 +43,13 @@ end
 orders = []
 5.times do |n|
   user_id = users.sample.id
-  orders << Order.create!(user_id: user_id)
+  phone = "0132467981"
+  address = "FHome, Da Nang"
+  name  = Faker::Name.name
+  orders << Order.create!(user_id: user_id,
+                          phone: phone,
+                          address: address,
+                          reciever_name: name)
 end
 
 order_products = []
@@ -54,3 +61,12 @@ order_products = []
                                           product_id: product_id,
                                           quantity: quantity)
 end
+
+# user admin
+User.create!(name: "naruto",
+             email: "naruto@gmail.com",
+             password: "123456",
+             password_confirmation: "123456",
+             phone: "0132467981",
+             address: "Leaf Village",
+             role: 1)
