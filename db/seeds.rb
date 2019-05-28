@@ -13,7 +13,7 @@ products = []
   quantity = Faker::Number.between(10, 100)
   price = Faker::Number.between(10, 100)
   category = categories.sample.id
-  image = "http://bestjquery.com/tutorial/product-grid/demo4/images/img-#{Faker::Number.between(1, 8)}.jpg"
+  image = nil
   rank = Faker::Number.between(10, 50).to_f / 10
   products << Product.create!(name: name,
                               info: info,
