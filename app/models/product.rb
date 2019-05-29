@@ -12,6 +12,8 @@ class Product < ApplicationRecord
   validates :price,
     numericality: {greater_than_or_equal_to: 0, only_integer: true}
 
+  mount_uploader :image, PictureUploader
+
   scope :order_option, ->(option){order(option => :DESC)}
   scope :load_category, ->(ids){where category_id: ids if ids.any?}
   scope :find_ids, ->(ids){where id: ids}
