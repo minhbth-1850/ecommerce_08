@@ -1,0 +1,7 @@
+<div id="fb-root"></div>
+<div class="fb-share-button" data-href="<%= link %>"
+  data-layout="button_count" data-size="small">
+  <%= link_to "Share", "https://www.facebook.com/sharer/sharer.php?u=#{link}",
+    class: "fb-xfbml-parse-ignore" %>
+</div>
+<div class="fb-comments" data-href="<%= link %>" width="100%" data-numposts="5"></div>
