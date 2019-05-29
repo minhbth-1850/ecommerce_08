@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     resources :users
     resources :products
+    resources :categories
     resources :orders
     resources :reviews, only: %i(create update)
   end

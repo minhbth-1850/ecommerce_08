@@ -35,6 +35,7 @@ vi:
     enter_review: "Nhap danh gia cua ban..."
     history: "Lich su"
     receipt: "Hoa don"
+    none: "Khong"
   link:
     home: "Trang chu"
     help: "Tro giup"
@@ -49,6 +50,9 @@ vi:
     cart: "Gio hang"
     continue: "Tiep tuc mua hang"
     checkout: "Thanh toan"
+    manager: "Quan ly"
+    add_product: "+ Tao moi san pham"
+    add_menu: "+ Tao moi danh muc"
   form:
     name: "Ten"
     email: "Email"
@@ -67,6 +71,11 @@ vi:
     thank_pay: "Cam on ban da mua hang!"
     review_success: "Danh gia thanh cong!"
     review_fail: "Danh gia that bai!"
+    create_ok: "%{name} duoc tao thanh cong"
+    update_ok: "%{name} duoc cap nhat thanh cong"
+    del_ok: "%{name} da bi xoa"
+    login_admin: "Vui long dang nhap bang quan tri vien"
+    you_sure: "Ban co chac khong?"
   product:
     unit: "$"
     amount:

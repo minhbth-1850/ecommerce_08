@@ -14,7 +14,7 @@ en:
     back_top: "Back to top"
   label:
     welcome: "Let's shop with %{logo}!"
-    edit: "Edit Profile"
+    edit: "Edit"
     category: "Category"
     sort: "Sort by"
     search: "Search"
@@ -35,6 +35,7 @@ en:
     enter_review: "Enter your review..."
     history: "History"
     receipt: "Receipt"
+    none: "None"
   link:
     home: "Home"
     help: "Help"
@@ -49,6 +50,9 @@ en:
     cart: "Cart"
     continue: "Continue Shoping"
     checkout: "Check out"
+    manager: "Manager"
+    add_product: "+ Add new product"
+    add_menu: "+ Add new category"
   form:
     name: "Name"
     email: "Email"
@@ -67,6 +71,11 @@ en:
     thank_pay: "Thank you for shoping!"
     review_success: "Review successful!"
     review_fail: "Review Fail!"
+    create_ok: "%{name} is created successful"
+    update_ok: "%{name} is updated successful"
+    del_ok: "%{name} is deleted"
+    login_admin: "Please login as admin"
+    you_sure: "Are you sure?"
   product:
     unit: "$"
     amount:

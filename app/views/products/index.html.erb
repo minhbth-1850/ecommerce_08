@@ -1,0 +1,37 @@
+<br>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <h1><%= t("label.product") %></h1>
+  </div>
+  <div class="row">
+    <%= link_to t("link.add_product"), new_product_path, class: "btn btn-info" %>
+    <%= link_to t("link.add_menu"), new_category_path, class: "form-select btn btn-info" %>
+  </div>
+  </br>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="th-child-5">ID</th>
+          <th class="th-child-5"><%= t("label.image") %></th>
+          <th class="th-child-20"><%= t("label.product") %></th>
+          <th class="th-child-20"><%= t("label.info") %></th>
+          <th class="th-child-20"><%= t("label.category") %></th>
+          <th class="th-child-10"><%= t("label.price") %></th>
+          <th class="th-child-5"><%= t("label.quantity") %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each_with_index do |product, i| %>
+          <%= render "product", product: product,
+            counter: counter_per_page(i, params[:page], Settings.products.per_page) %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row justify-content-md-center">
+    <%= will_paginate %>
+  </div>
+</div>

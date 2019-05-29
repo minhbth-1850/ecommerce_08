@@ -31,6 +31,17 @@
         </li>
 
         <% if logged_in? %>
+          <% if current_user.admin? %>
+            <li class="nav-item dropdown ">
+              <div id="navbardrop" data-toggle="dropdown">
+                <%= link_to t("link.manager"), "#", class: "nav-link dropdown-toggle active" %>
+              </div>
+              <div class="dropdown-menu">
+                <%= link_to t("label.product"), products_path, class: "dropdown-item" %>
+                <%= link_to t("label.receipt"), "#", class: "dropdown-item" %>
+              </div>
+            </li>
+          <% end %>
           <li class="nav-item dropdown ">
             <div id="navbardrop" data-toggle="dropdown">
               <%= link_to t("link.account"), "#", class: "nav-link dropdown-toggle active" %>

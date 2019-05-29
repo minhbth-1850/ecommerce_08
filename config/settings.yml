@@ -12,6 +12,7 @@ products:
   fake_sale: 1.5
   max_stars: 5
   round: 2
+  name_length: 50
 cart:
   per_page: 3
   size_img: "50x50"

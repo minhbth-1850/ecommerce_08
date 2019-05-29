@@ -8,4 +8,9 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+
+  def counter_per_page index, page, per_page
+    page = page ? page.to_i : 1
+    index + 1 + (page - 1) * per_page
+  end
 end
