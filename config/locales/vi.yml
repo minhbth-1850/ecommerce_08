@@ -1,4 +1,9 @@
 vi:
+  order_state:
+    processing: "Dang xu ly"
+    failed: "That bai"
+    completed: "Hoan thanh"
+    cancelled: "Da huy"
   sort_option:
     created_at: "Moi nhat"
     price: "Gia"

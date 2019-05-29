@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1><%= t("email.request", name: @user.name) %></h1>
-    <%= link_to t("email.check_order"), edit_order_url(id: @order.id) %>
+    <%= link_to t("email.check_order"), edit_admin_order_url(id: @order.id) %>
     <%= render "order", order: @order %>
   </body>
 </html>

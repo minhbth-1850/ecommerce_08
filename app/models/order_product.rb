@@ -13,6 +13,12 @@ class OrderProduct < ApplicationRecord
       .limit(Settings.products.hot_page)
   end)
 
+  scope :contain_product, ->(product_id) do
+    group(:order_id)
+      .select(:order_id)
+      .where(product_id: product_id)
+  end
+
   def decrement_product_quantity!
     product.decrement!(:quantity, quantity)
   end

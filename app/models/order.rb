@@ -12,6 +12,8 @@ class Order < ApplicationRecord
   validate :enough_product
 
   scope :latest, ->{order(updated_at: :DESC)}
+  scope :contain_product, ->(id){where id: OrderProduct.contain_product(id)}
+  scope :processes, ->{where state: 0}
 
   private
 

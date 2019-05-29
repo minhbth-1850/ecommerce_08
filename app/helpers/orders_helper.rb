@@ -18,6 +18,10 @@ module OrdersHelper
                  else
                    "btn btn-warning"
                  end
-    "<div class=\"#{class_type}\">#{state}</div>".html_safe
+    "<div class=\"#{class_type}\">#{I18n.t("order_state")[state.to_sym]}</div>".html_safe
+  end
+
+  def load_order_states
+    Order.states.map{|k, v| [I18n.t("order_state")[k.to_sym], k]}
   end
 end
