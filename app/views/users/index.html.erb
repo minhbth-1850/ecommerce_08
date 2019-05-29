@@ -1,0 +1,33 @@
+<br>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <h1><%= t("label.user") %></h1>
+  </div>
+  </br>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th><%= t("label.name") %></th>
+          <th><%= t("label.email") %></th>
+          <th><%= t("label.address") %></th>
+          <th><%= t("label.phone") %></th>
+          <th> Role</th>
+
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each_with_index do |user, i| %>
+          <%= render "user", user: user,
+            counter: counter_per_page(i, params[:page], Settings.users.per_page) %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row justify-content-md-center">
+    <%= will_paginate %>
+  </div>
+</div>
