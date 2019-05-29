@@ -1,4 +1,9 @@
 en:
+  order_state:
+    processing: "Process"
+    failed: "Failed"
+    completed: "Completed"
+    cancelled: "Cancelled"
   sort_option:
     created_at: "Created"
     price: "Price"
