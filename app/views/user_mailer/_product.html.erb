@@ -1,0 +1,7 @@
+<tr>
+  <td><%= counter %></td>
+  <td><%= product.name %></td>
+  <td class="text-left"><%= number_to_price(product.price) %></td>
+  <td class="text-center"><%= product.quantity %></td>
+  <td class="text-left"><%= number_to_price(product.price * product.quantity) %></td>
+</tr>

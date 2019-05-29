@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><%= t("email.order") %> <%= @user.name %></h1>
+    <p><%= t("flash.thank_pay") %></p>
+    <%= link_to t("label.history"), orders_url %>
+    <%= render "order", order: @order %>
+  </body>
+</html>

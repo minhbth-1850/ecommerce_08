@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><%= t("email.request", name: @user.name) %></h1>
+    <%= link_to t("email.check_order"), edit_order_url(id: @order.id) %>
+    <%= render "order", order: @order %>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<p>
+  <%= t("label.receipt") %>
+  <%= @order.id %>:
+  <strong><%= @order.state %></strong>
+</p>
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th><%= t("label.product") %></th>
+        <th><%= t("label.price") %></th>
+        <th><%= t("label.quantity") %></th>
+        <th><%= t("label.total") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.order_products.each_with_index do |product, i| %>
+        <%= render "product", product: product, counter: (i + 1) %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<%= t("label.total") %>:
+<%= number_to_price get_price_order(@order) %>

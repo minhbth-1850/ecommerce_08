@@ -85,3 +85,7 @@ vi:
     review:
       one: "%{count} danh gia"
       other: "%{count} danh gia"
+  email:
+    order: "Don dat hang"
+    request: "Yeu cau dat hang tu %{name}"
+    check_order: "Kiem tra don hang"
