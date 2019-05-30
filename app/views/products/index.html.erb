@@ -2,12 +2,27 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <h1><%= t("label.product") %></h1>
+    </br>
   </div>
   <div class="row">
+    <div class="col-md-5">
     <%= link_to t("link.add_product"), new_product_path, class: "btn btn-info" %>
     <%= link_to t("link.add_menu"), new_category_path, class: "form-select btn btn-info" %>
+    </div>
+    <div class="col-md-7">
+      <div class="row">
+        <%= form_tag import_products_path, multipart: true do %>
+          <%= file_field_tag :file %>
+          <%= submit_tag t("form.import"), class: "btn btn-info" %>
+        <% end %>
+        <%= link_to t("form.export"), products_path(format: "csv"), class: "form-select btn btn-info" %>
+        <%= link_to t("link.template"), products_path(format: "csv", type: Settings.products.tmp_type),
+          class: "form-select btn btn-info" %>
+      </div>
+    </div>
   </div>
   </br>
+
   <div class="row">
     <table class="table">
       <thead>
@@ -34,4 +49,3 @@
   <div class="row justify-content-md-center">
     <%= will_paginate %>
   </div>
-</div>

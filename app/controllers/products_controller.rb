@@ -5,6 +5,16 @@ class ProductsController < ApplicationController
 
   def index
     @products = load_all_products Settings.products.per_page
+    respond_to do |format|
+      format.html
+      format.csv do
+        if Settings.products.tmp_type == params[:type].to_i
+          send_data Product.to_template, filename: "productTmp.csv"
+        else
+          send_data Product.all.to_csv, filename: "productAll.csv"
+        end
+      end
+    end
   end
 
   def new
@@ -43,6 +53,14 @@ class ProductsController < ApplicationController
       flash[:danger] = t "flash.nil_object", name: t("label.product")
       redirect_to root_path
     end
+  end
+
+  def import
+    if params[:file].present?
+      counter = Product.import(params[:file].path)
+      flash[:success] = t("product.import", count: counter)
+    end
+    redirect_to :products
   end
 
   private

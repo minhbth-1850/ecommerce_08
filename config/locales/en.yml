@@ -63,6 +63,7 @@ en:
     manager: "Manager"
     add_product: "+ Add new product"
     add_menu: "+ Add new category"
+    template: "Template"
   form:
     name: "Name"
     email: "Email"
@@ -74,6 +75,8 @@ en:
     pay: "Pay Now"
     post: "Post"
     role: "Role"
+    import: "Import"
+    export: "Export file"
   flash:
     nil_object: "%{name} not found!"
     login_plz: "Please login before!"
@@ -96,6 +99,9 @@ en:
     review:
       one: "%{count} review"
       other: "%{count} reviews"
+    import:
+      one: "Import %{count} product."
+      other: "Import %{count} products."
   email:
     order: "Order mail"
     request: "Request order from %{name}"

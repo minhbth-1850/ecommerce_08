@@ -63,6 +63,7 @@ vi:
     manager: "Quan ly"
     add_product: "+ Tao moi san pham"
     add_menu: "+ Tao moi danh muc"
+    template: "file mau"
   form:
     name: "Ten"
     email: "Email"
@@ -74,6 +75,8 @@ vi:
     pay: "Thanh toan"
     post: "Dang"
     role: "Quyen han"
+    import: "Nhap file"
+    export: "Xuat file"
   flash:
     nil_object: "%{name} khong duoc tim thay!"
     login_plz: "Vui long dang nhap!"
@@ -96,6 +99,9 @@ vi:
     review:
       one: "%{count} danh gia"
       other: "%{count} danh gia"
+    import:
+      one: "Da nhap %{count} san pham."
+      other: "Da nhap %{count} san pham."
   email:
     order: "Don dat hang"
     request: "Yeu cau dat hang tu %{name}"

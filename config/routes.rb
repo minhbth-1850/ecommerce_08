@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get "/cart", to: "cart#show"
     delete "/cart", to: "cart#destroy"
     get "/payment", to: "cart#checkout"
+    get "/sort_users", to: "users#sort"
 
     resources :users
     resources :products
@@ -20,6 +21,10 @@ Rails.application.routes.draw do
 
     namespace :admin do
       resources :orders
+    end
+
+    resources :products do
+      collection { post :import }
     end
   end
 end
