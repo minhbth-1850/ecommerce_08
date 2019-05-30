@@ -20,6 +20,8 @@ class User < ApplicationRecord
   before_save{email.downcase!}
   has_secure_password
 
+  scope :activates, ->{where activated: true}
+
   class << self
     def digest string
       cost = if ActiveModel::SecurePassword.min_cost

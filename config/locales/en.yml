@@ -41,6 +41,7 @@ en:
     history: "History"
     receipt: "Receipt"
     none: "None"
+    user: "Users"
   link:
     home: "Home"
     help: "Help"
@@ -68,6 +69,7 @@ en:
     address: "Address"
     pay: "Pay Now"
     post: "Post"
+    role: "Role"
   flash:
     nil_object: "%{name} not found!"
     login_plz: "Please login before!"

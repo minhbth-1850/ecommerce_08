@@ -41,6 +41,7 @@ vi:
     history: "Lich su"
     receipt: "Hoa don"
     none: "Khong"
+    user: "Users"
   link:
     home: "Trang chu"
     help: "Tro giup"
@@ -68,6 +69,7 @@ vi:
     address: "Dia chi"
     pay: "Thanh toan"
     post: "Dang"
+    role: "Quyen han"
   flash:
     nil_object: "%{name} khong duoc tim thay!"
     login_plz: "Vui long dang nhap!"

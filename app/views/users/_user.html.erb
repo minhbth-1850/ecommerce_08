@@ -1,0 +1,18 @@
+<tr>
+  <td><%= counter %></td>
+  <td><%= user.name %></td>
+  <td><%= user.email %></td>
+  <td><%= user.address %></td>
+  <td><%= user.phone %></td>
+  <td><%= user.role %></td>
+
+  <td class="text-right">
+    <%= link_to edit_user_path(user), class: "btn btn-warning" do %>
+      <i class="fa fa-edit"></i>
+    <% end %>
+    <%= link_to user, method: :DELETE, data: {confirm: t("flash.you_sure")},
+      class: "btn btn-danger" do %>
+      <i class="fa fa-trash"></i>
+    <% end %>
+  </td>
+</tr>
