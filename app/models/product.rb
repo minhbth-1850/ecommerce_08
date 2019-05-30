@@ -28,4 +28,25 @@ class Product < ApplicationRecord
   def get_total_price
     price * amount_added
   end
+
+  class << self
+    def import(file)
+      counter = 0
+      CSV.foreach(file.path, headers: true) do |row|
+        product = row.to_hash
+        product.delete("id")
+        counter += 1 if Product.create(product)
+      end
+      counter
+    end
+
+    def to_csv
+      CSV.generate do |csv|
+        csv << column_names
+        all.each do |product|
+          csv << product.attributes.values_at(*column_names)
+        end
+      end
+    end
+  end
 end

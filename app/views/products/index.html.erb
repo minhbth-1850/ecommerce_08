@@ -35,3 +35,15 @@
     <%= will_paginate %>
   </div>
 </div>
+
+<h2>Import</h2>
+
+<%= form_tag import_products_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag 'Import' %>
+<% end %>
+
+<p>
+  Download:
+  <%= link_to "CSV", products_path(format: "csv") %>
+</p>
