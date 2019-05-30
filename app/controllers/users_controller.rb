@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, except: %i(new create)
+  before_action :logged_as_admin, only: %i(index destroy)
   before_action :load_user, only: %i(show edit update)
   before_action :correct_user, only: :edit
+
+  def index
+    @users = User.activates.paginate page: params[:page],
+      per_page: Settings.users.per_page
+  end
 
   def new
     @user = User.new
@@ -26,7 +32,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes user_params
       flash[:success] = t "flash.profile_update"
-      redirect_to @user
+      redirect_to current_user.admin? ? :users : @user
     else
       render :edit
     end
@@ -36,11 +42,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit :name, :email, :phone, :address,
-      :password, :password_confirmation
+      :password, :password_confirmation, :role
   end
 
   def correct_user
-    return if current_user? @user
+    return if current_user.admin? || current_user?(@user)
 
     flash[:danger] = t "flash.login_plz"
     redirect_to root_path

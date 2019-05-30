@@ -1,10 +1,38 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+<div class="container">
+  </br>
+  <div class="col-md-8 offset-md-1">
+    <div class="row">
+      <div class="col-md-4 offset-md-1">
+        <div class="product-grid3">
+          <div class="product-image3">
+            <%= image_tag "http://www.aiszambia.com/image/avatar.png" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 offset-md-1">
+        <h1><%= @user.name %></h1>
+        </br>
+        <h5>
+          <i class="fa fa-envelope"></i>
+          <cite> <%= @user.email %> </cite>
+        </h5>
+        <h5>
+          <i class="fa fa-address-book"></i>
+          <cite> <%= @user.address %> </cite>
+        </h5>
+        <h5>
+          <i class="fa fa-phone"></i>
+          <cite> <%= @user.phone %> </cite>
+        </h5>
+        <h5>
+          <i class="fa fa-user"></i>
+          <cite> <%= @user.role %> </cite>
+        </h5>
+        </br>
+        <%= link_to t("label.edit"), edit_user_path(@user), class: "btn btn-info" %>
+      </div>
+    </div>
+  </div>
 </div>
+<hr>
