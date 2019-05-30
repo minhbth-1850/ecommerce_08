@@ -68,4 +68,11 @@ module ProductsHelper
   def fake_sale_price price
     number_to_price price * Settings.products.fake_sale
   end
+
+  def check_del_product product
+    orders = product.orders.processing
+    orders.each do |order|
+      UserMailer.order_email(order.user, order).deliver_now if order.cancelled!
+    end
+  end
 end

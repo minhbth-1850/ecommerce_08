@@ -4,7 +4,15 @@
 </div>
 
 <% if @orders.any? %>
-  <%= render partial: "shared/order", collection: @orders %>
+  <% @orders.each_with_index do |order| %>
+    <%= render "shared/order", order: order %>
+    <div class="text-right">
+      <%= link_to edit_admin_order_path(order), class: "btn btn-info" do %>
+        <%= t("label.edit") %>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="row justify-content-md-center">
     <%= will_paginate @orders %>
   </div>

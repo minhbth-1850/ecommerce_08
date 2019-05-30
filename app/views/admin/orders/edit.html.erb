@@ -1,0 +1,14 @@
+<div class="container">
+  <br>
+  <div class="col-md-6 offset-md-3">
+    <h1><%= t("email.check_order") %></h1>
+    <%= form_for [:admin, @order] do |f| %>
+      <div class="form-group">
+        <%= f.select(:state, load_order_states, {include_blank: false}, class: "form-control") %>
+      </div>
+      <%= f.submit "Update", class: "form-control btn-info" %>
+    <% end %>
+  </div>
+
+  <%= render "shared/order", order: @order %>
+</div>

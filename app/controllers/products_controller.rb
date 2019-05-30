@@ -37,6 +37,7 @@ class ProductsController < ApplicationController
   def destroy
     if @product.update_attribute(:activated, false)
       flash[:success] = t "flash.del_ok", name: t("label.product")
+      check_del_product @product
       redirect_to :products
     else
       flash[:danger] = t "flash.nil_object", name: t("label.product")
@@ -60,7 +61,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit :name, :info, :category,
+    params.require(:product).permit :name, :info, :category_id,
       :quantity, :price, :image
   end
 end

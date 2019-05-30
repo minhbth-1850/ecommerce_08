@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     resources :users
     resources :products
     resources :categories
-    resources :orders
+    resources :orders, only: %i(new index create)
     resources :reviews, only: %i(create update)
+
+    namespace :admin do
+      resources :orders
+    end
   end
 end
