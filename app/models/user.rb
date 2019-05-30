@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_secure_password
 
   scope :activates, ->{where activated: true}
+  scope :order_option, ->(option){order(option => :DESC)}
 
   class << self
     def digest string

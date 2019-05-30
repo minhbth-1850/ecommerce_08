@@ -1,4 +1,8 @@
 en:
+  sort_user:
+    created_at: "Created"
+    role: "Role"
+    name: "Name"
   order_state:
     processing: "Process"
     failed: "Failed"
@@ -41,7 +45,7 @@ en:
     history: "History"
     receipt: "Receipt"
     none: "None"
-    user: "Users"
+    user: "User"
   link:
     home: "Home"
     help: "Help"

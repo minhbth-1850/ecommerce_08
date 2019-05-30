@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
+  include UsersHelper
+
   before_action :logged_in_user, except: %i(new create)
   before_action :logged_as_admin, only: %i(index destroy)
-  before_action :load_user, only: %i(show edit update)
+  before_action :load_user, except: %i(index new create)
   before_action :correct_user, only: :edit
 
   def index
-    @users = User.activates.paginate page: params[:page],
+    option = load_params_option(params[:sort_id].to_i)
+    @users = User.activates.order_option(option).paginate page: params[:page],
       per_page: Settings.users.per_page
   end
 
@@ -35,6 +38,17 @@ class UsersController < ApplicationController
       redirect_to current_user.admin? ? :users : @user
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @user.update_attribute(:activated, false)
+      flash[:success] = t "flash.del_ok", name: t("label.user")
+      check_del_user @user
+      redirect_to :users
+    else
+      flash[:danger] = t "flash.nil_object", name: t("label.user")
+      redirect_to root_path
     end
   end
 
