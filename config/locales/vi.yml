@@ -1,4 +1,8 @@
 vi:
+  sort_user:
+    created_at: "Moi nhat"
+    role: "Quyen han"
+    name: "Ten"
   order_state:
     processing: "Dang xu ly"
     failed: "That bai"
@@ -41,7 +45,7 @@ vi:
     history: "Lich su"
     receipt: "Hoa don"
     none: "Khong"
-    user: "Users"
+    user: "Nguoi dung"
   link:
     home: "Trang chu"
     help: "Tro giup"
