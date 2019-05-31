@@ -1,6 +1,6 @@
 class CartController < ApplicationController
   def shoping
-    add_product params[:cart][:product_id]
+    add_product params[:cart][:product_id], params[:cart][:quantity].to_i
     respond_to do |format|
       format.html{redirect_to cart_path}
       format.js

@@ -1,65 +1,73 @@
-<header>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container">
-      <%= link_to t("logo"), root_path, class: "navbar-brand" %>
+<div class="fixed-top">
+  <header >
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container">
+        <%= link_to t("logo"), root_path, class: "navbar-brand" %>
 
-      <nav class="navbar navbar-expand-sm justify-content-center">
-        <form class="form-inline my-2 my-lg-0">
-          <div class="input-group input-group-sm">
-            <%= text_field_tag :search_text, "", placeholder: t("label.search"), class: "form-control" %>
-            <div class="input-group-append">
-              <%= button_tag :submit, class: "btn btn-secondary btn-number" do %>
-                <i class="fa fa-search"></i>
-              <% end %>
+        <nav class="navbar navbar-expand-sm justify-content-center">
+          <form class="form-inline my-2 my-lg-0">
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :search_text, "", placeholder: t("label.search"), class: "form-control" %>
+              <div class="input-group-append">
+                <%= button_tag :submit, class: "btn btn-secondary btn-number" do %>
+                  <i class="fa fa-search"></i>
+                <% end %>
+              </div>
             </div>
-          </div>
-          <%= link_to cart_path, class: "btn btn-success btn-sm ml-3" do %>
-            <i class="fa fa-shopping-cart"></i> <%= t("link.cart") %>
-            <span class="badge badge-light" id="cart_size">
-              <%= load_size_cart %>
-            </span>
-          <% end %>
-        </form>
-      </nav>
+            <%= link_to cart_path, class: "btn btn-success btn-sm ml-3" do %>
+              <i class="fa fa-shopping-cart"></i> <%= t("link.cart") %>
+              <span class="badge badge-light" id="cart_size">
+                <%= load_size_cart %>
+              </span>
+            <% end %>
+          </form>
+        </nav>
 
-      <ul class="navbar-nav nav-right">
-        <li class="nav-item active">
-          <%= link_to t("label.home"), root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to t("link.cart"), cart_path, class: "nav-link" %>
-        </li>
+        <ul class="navbar-nav nav-right">
+          <li class="nav-item active">
+            <%= link_to t("label.home"), root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to t("link.cart"), cart_path, class: "nav-link" %>
+          </li>
 
-        <% if logged_in? %>
-          <% if current_user.admin? %>
+          <% if logged_in? %>
+            <% if current_user.admin? %>
+              <li class="nav-item dropdown ">
+                <div id="navbardrop" data-toggle="dropdown">
+                  <%= link_to t("link.manager"), "#", class: "nav-link dropdown-toggle active" %>
+                </div>
+                <div class="dropdown-menu">
+                  <%= link_to t("label.user"), users_path, class: "dropdown-item" %>
+                  <%= link_to t("label.product"), products_path, class: "dropdown-item" %>
+                  <%= link_to t("label.receipt"), admin_orders_path, class: "dropdown-item" %>
+                </div>
+              </li>
+            <% end %>
             <li class="nav-item dropdown ">
               <div id="navbardrop" data-toggle="dropdown">
-                <%= link_to t("link.manager"), "#", class: "nav-link dropdown-toggle active" %>
+                <%= link_to t("link.account"), "#", class: "nav-link dropdown-toggle active" %>
               </div>
               <div class="dropdown-menu">
-                <%= link_to t("label.user"), users_path, class: "dropdown-item" %>
-                <%= link_to t("label.product"), products_path, class: "dropdown-item" %>
-                <%= link_to t("label.receipt"), admin_orders_path, class: "dropdown-item" %>
+                <%= link_to t("link.profile"), current_user, class: "dropdown-item" %>
+                <%= link_to t("link.setting"), edit_user_path(current_user), class: "dropdown-item" %>
+                <%= link_to t("label.history"), orders_path, class: "dropdown-item" %>
+                <%= link_to t("link.logout"), logout_path, method: :delete, class: "dropdown-item" %>
               </div>
             </li>
+          <% else %>
+            <li class="nav-item active">
+              <%= link_to t("link.login"), login_path, class: "nav-link" %>
+            </li>
           <% end %>
-          <li class="nav-item dropdown ">
-            <div id="navbardrop" data-toggle="dropdown">
-              <%= link_to t("link.account"), "#", class: "nav-link dropdown-toggle active" %>
-            </div>
-            <div class="dropdown-menu">
-              <%= link_to t("link.profile"), current_user, class: "dropdown-item" %>
-              <%= link_to t("link.setting"), edit_user_path(current_user), class: "dropdown-item" %>
-              <%= link_to t("label.history"), orders_path, class: "dropdown-item" %>
-              <%= link_to t("link.logout"), logout_path, method: :delete, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item active">
-            <%= link_to t("link.login"), login_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
-</header>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container" id="alert-msg">
+    <% flash.each do |message_type, message| %>
+      <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+    <% end %>
+  </div>
+</div>

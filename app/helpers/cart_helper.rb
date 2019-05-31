@@ -11,14 +11,34 @@ module CartHelper
     save_cookie_cart Hash.new
   end
 
-  def add_product product_id
+  def add_product product_id, quantity = 1
+    product = Product.find_by id: product_id
+    if quantity <= 0 || product.nil?
+      flash[:danger] = I18n.t "product.add_failed"
+      return
+    end
+
     load_cookie_cart
     if @orders.key? product_id
-      @orders[product_id] += 1
+      @orders[product_id] += quantity
     else
-      @orders[product_id] = 1
+      @orders[product_id] = quantity
     end
-    save_cookie_cart @orders
+
+    check_out_stock product, quantity
+  end
+
+  def check_out_stock product, quantity
+    id = product.id.to_s
+    if @orders[id] > product.quantity
+      @orders[id] = product.quantity
+      flash[:warning] = product.name + I18n.t("product.out_stock",
+        count: product.quantity)
+    else
+      flash[:success] = I18n.t "product.added", name: product.name,
+        count: quantity
+      save_cookie_cart @orders
+    end
   end
 
   def remove_product product_id
@@ -37,7 +57,7 @@ module CartHelper
 
   def load_size_cart
     load_cookie_cart
-    @orders.values.sum
+    @orders.size
   end
 
   def get_total_price products
