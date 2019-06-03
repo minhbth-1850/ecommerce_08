@@ -1,0 +1,30 @@
+<br>
+<h3><%= t("label.statistic") %></h3>
+<br>
+<div class="text-center"><h4><%= t("label.chart.user_day") %></h4></div><br>
+<%= line_chart @users.group_by_day(:created_at).count, xtitle: t("label.day"), ytitle: t("label.quantity") %>
+<div class="text-right">
+  <%= link_to t("link.more_detail"), users_path %>
+</div>
+<br>
+<br>
+<div class="text-center"><h4><%= t("label.chart.order_day") %></h4></div><br>
+<%= pie_chart @orders.group_by_day_of_week(:created_at, format: "%a").count %>
+<div class="text-right">
+  <%= link_to t("link.more_detail"), admin_orders_path %>
+</div>
+<br>
+<br>
+<div class="text-center"><h4><%= t("label.chart.order_cancel") %></h4></div><br>
+<%= area_chart @cancel_orders.group_by_day(:updated_at).count, xtitle: t("label.day"), ytitle: t("label.quantity") %>
+<div class="text-right">
+  <%= link_to t("link.more_detail"), admin_orders_path %>
+</div>
+<br>
+<br>
+<div class="text-center"><h4><%= t("label.chart.product_most") %></h4></div><br>
+<%= column_chart @order_products, xtitle: t("label.product"), ytitle: t("label.quantity") %>
+<div class="text-right">
+  <%= link_to t("link.more_detail"), admin_orders_path %>
+</div>
+<br>

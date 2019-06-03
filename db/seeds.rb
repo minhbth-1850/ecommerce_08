@@ -8,7 +8,7 @@ end
 
 products = []
 99.times do |n|
-  name  = Faker::Name.name
+  name  = Faker::Commerce.product_name
   info = Faker::Commerce.department
   quantity = Faker::Number.between(10, 100)
   price = Faker::Number.between(10, 100)
@@ -70,3 +70,12 @@ User.create!(name: "naruto",
              phone: "0132467981",
              address: "Leaf Village",
              role: 1)
+
+#random created_at User, Order
+User.all.each do |e|
+  e.update_column(:created_at, Faker::Time.between(20.days.ago, Time.now, :all))
+end
+
+Order.all.each do |e|
+  e.update_column(:created_at, Faker::Time.between(20.days.ago, Time.now, :all))
+end

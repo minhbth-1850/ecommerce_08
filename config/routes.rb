@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     patch "/cart", to: "cart#update"
     get "/payment", to: "cart#checkout"
     get "/sort_users", to: "users#sort"
+    get "/statistic", to: "statistic#show"
 
     resources :users
     resources :products
