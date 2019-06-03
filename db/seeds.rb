@@ -9,7 +9,7 @@ end
 products = []
 99.times do |n|
   name  = Faker::Name.name
-  info = Faker::Company.name
+  info = Faker::Commerce.department
   quantity = Faker::Number.between(10, 100)
   price = Faker::Number.between(10, 100)
   category = categories.sample.id

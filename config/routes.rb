@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
     root "static_pages#home"
     get "/select", to: "static_pages#select"
+    get "/search", to: "static_pages#search"
     get "/signup", to: "users#new"
     post "/signup", to: "users#create"
     get "/login", to: "sessions#new"

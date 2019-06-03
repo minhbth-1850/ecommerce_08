@@ -14,7 +14,7 @@ module CartHelper
   def add_product product_id, quantity = 1
     product = Product.find_by id: product_id
     if quantity <= 0 || product.nil?
-      return flash[:danger] = I18n.t "product.add_failed"
+      return flash[:danger] = I18n.t("product.add_failed")
     end
 
     load_cookie_cart
@@ -43,16 +43,14 @@ module CartHelper
   def update_cart product_id, quantity
     product = Product.find_by id: product_id
     if quantity <= 0 || product.nil?
-      return flash[:danger] = I18n.t "product.add_failed"
+      return flash[:danger] = I18n.t("product.add_failed")
     end
 
     load_cookie_cart
-    if @orders.key? product_id
-      @orders[product_id] = quantity
-    else
-      return flash[:danger] = I18n.t "product.add_failed"
+    unless @orders.key? product_id
+      return flash[:danger] = I18n.t("product.add_failed")
     end
-
+    @orders[product_id] = quantity
     check_out_stock product, quantity
   end
 
