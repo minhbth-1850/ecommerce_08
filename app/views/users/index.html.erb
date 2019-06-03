@@ -10,7 +10,7 @@
         <form class="form-inline">
           <div class="col-md-3">
             <label><%= t "label.sort" %> :</label>
-            <%= select_tag :sort_id, options_for_select(load_options, params[:sort_id]), {class: "form-control form-select"} %>
+            <%= select_tag :sort_id, options_for_select(load_options_user, params[:sort_id]), {class: "form-control form-select"} %>
           </div>
           <div class="col-md-2">
             <%= submit_tag t("label.search"), class: "btn btn-primary" %>

@@ -5,22 +5,25 @@
         <%= link_to t("logo"), root_path, class: "navbar-brand" %>
 
         <nav class="navbar navbar-expand-sm justify-content-center">
-          <form class="form-inline my-2 my-lg-0">
-            <div class="input-group input-group-sm">
-              <%= text_field_tag :search_text, "", placeholder: t("label.search"), class: "form-control" %>
-              <div class="input-group-append">
-                <%= button_tag :submit, class: "btn btn-secondary btn-number" do %>
-                  <i class="fa fa-search"></i>
-                <% end %>
+          <div class="form-inline my-2 my-lg-0">
+            <%= form_tag search_path, method: :GET do %>
+              <div class="input-group input-group-sm">
+                <%= text_field_tag :search_text, params[:search_text], placeholder: t("label.search"),
+                  class: "form-control" %>
+                <div class="input-group-append">
+                  <%= button_tag :submit, class: "btn btn-secondary btn-number" do %>
+                    <i class="fa fa-search"></i>
+                  <% end %>
+                </div>
               </div>
-            </div>
+            <% end %>
             <%= link_to cart_path, class: "btn btn-success btn-sm ml-3" do %>
               <i class="fa fa-shopping-cart"></i> <%= t("link.cart") %>
               <span class="badge badge-light" id="cart_size">
                 <%= load_size_cart %>
               </span>
             <% end %>
-          </form>
+          </div>
         </nav>
 
         <ul class="navbar-nav nav-right">

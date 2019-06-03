@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: :edit
 
   def index
-    option = load_params_option(params[:sort_id].to_i)
+    option = load_params_user(params[:sort_id].to_i)
     @users = User.activates.order_option(option).paginate page: params[:page],
       per_page: Settings.users.per_page
   end
