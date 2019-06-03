@@ -56,6 +56,6 @@ class Product < ApplicationRecord
   end
 
   def get_total_price
-    price * amount_added
+    amount_added.present? ? price * amount_added : price
   end
 end

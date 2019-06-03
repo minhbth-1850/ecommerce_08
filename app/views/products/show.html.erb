@@ -11,16 +11,8 @@
     <div class="col-md-7">
       <h1><strong><%= @product.name %></strong></h1>
       <ul class="rating">
-        <% starlight = @product.get_rank %>
-        <% Settings.products.max_stars.times do |n| %>
-          <% if n + 0.5 == starlight %>
-            <li class="fa fa-star-half-o"></li>
-          <% elsif n < starlight %>
-            <li class="fa fa-star"></li>
-          <% else %>
-            <li class="fa fa-star-o"></li>
-          <% end %>
-        <% end %>
+        <%= hidden_field_tag :stars, @product.get_rank,
+          class: "rating", data: {filled: "fa fa-star fa-1x", empty: "fa fa-star-o fa-1x", readonly: true} %>
       </ul>
       <h5>(<%= t("product.review", count: @product.reviews.count) %>)</h5>
       <h5><%= @product.info %></h5>
@@ -29,13 +21,15 @@
         <%= t("label.price") %>:
         <%= number_to_price @product.price %>
       </h3>
-      <h5>
-        <%= t("label.quantity") %>:
-        <%= @product.quantity %>
-      </h5>
       <br>
       <%= form_for :cart, url: shoping_path, method: :POST, remote: true do |f| %>
         <div><%= f.hidden_field :product_id, value: @product.id %></div>
+        <div class="form-inline">
+          <%= f.label :quantity, t("label.quantity") %>
+          <%= f.number_field :quantity, value: Settings.products.quantity_min,
+            class: "form-select form-control" %>
+        </div>
+        <br>
         <%= f.button :submit, class: "btn btn-info" do %>
           <i class="fa fa-shopping-bag"></i> Add to cart
         <% end %>
@@ -43,14 +37,19 @@
 
       <hr>
       <%= form_for @review do |f| %>
-        <h3><%= t("label.review") %>:</h3>
-        <%= f.hidden_field :product_id, value: @product.id %>
         <div class="row">
           <div class="col-md-2">
-            <label><%= t("label.stars") %>:</label>
-            <%= f.select :score, load_range_rate, class: "form-control" %>
+            <h4><%= t("label.review") %>:</h4>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-4 offset-md-1">
+            <%= f.hidden_field :product_id, value: @product.id %>
+            <%= f.hidden_field :score, class: "rating",
+              data: {filled: "fa fa-star fa-2x", empty: "fa fa-star-o fa-2x"} %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-10">
             <%= f.text_area :content, placeholder: t("label.enter_review"), class: "md-textarea form-control" %>
           </div>
           <div class="col-md-2">
@@ -60,5 +59,19 @@
       <% end %>
     </div>
   </div>
+  <hr>
+  <% if @product.reviews.any? %>
+    <div class="container">
+      <div class="card">
+        <div class="card-header">Comments</div>
+        <ul class="list-group list-group-flush">
+          <%= render partial: "review", collection: @reviews %>
+        </ul>
+      </div>
+    </div>
+
+    <%= will_paginate @reviews %>
+  <% end %>
 </div>
 <br>
+<%= javascript_include_tag "bootstrap-rating" %>

@@ -6,6 +6,7 @@
         <li>
           <%= form_for :cart, url: shoping_path, method: :POST, remote: true do |f| %>
             <div><%= f.hidden_field :product_id, value: product_item.id %></div>
+            <div><%= f.hidden_field :quantity, value: 1 %></div>
             <%= f.button :submit do %>
               <i class="fa fa-shopping-bag"></i>
             <% end %>
@@ -14,6 +15,7 @@
         <li>
           <%= form_for :cart, url: shoping_path, method: :POST do |f| %>
             <div><%= f.hidden_field :product_id, value: product_item.id %></div>
+            <div><%= f.hidden_field :quantity, value: Settings.products.quantity_min %></div>
             <%= f.button :submit do %>
               <i class="fa fa-shopping-cart"></i>
             <% end %>
