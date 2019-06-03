@@ -12,10 +12,14 @@ class CartController < ApplicationController
     load_products orders
   end
 
+  def update
+    update_cart params[:product_id], params[:quantity].to_i
+    redirect_to cart_path
+  end
+
   def destroy
-    orders = remove_product params[:product_id]
-    load_products orders
-    render :show
+    remove_product params[:product_id]
+    redirect_to cart_path
   end
 
   def checkout
