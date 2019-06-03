@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post "/shoping", to: "cart#shoping"
     get "/cart", to: "cart#show"
     delete "/cart", to: "cart#destroy"
+    patch "/cart", to: "cart#update"
     get "/payment", to: "cart#checkout"
     get "/sort_users", to: "users#sort"
 
