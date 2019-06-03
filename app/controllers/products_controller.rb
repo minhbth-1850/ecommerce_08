@@ -25,10 +25,9 @@ class ProductsController < ApplicationController
     @product = Product.new product_params
     if @product.save
       flash[:success] = t "flash.create_ok", name: t("label.product")
-      redirect_to :products
-    else
-      render :new
+      return redirect_to :products
     end
+    render :new
   end
 
   def show; end

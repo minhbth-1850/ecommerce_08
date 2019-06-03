@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :suggestions, dependent: :destroy
 
   enum role: {customer: 0, admin: 1}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

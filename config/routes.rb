@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :orders, only: %i(new index create)
     resources :reviews, only: %i(create update)
+    resources :suggestions
 
     namespace :admin do
       resources :orders
