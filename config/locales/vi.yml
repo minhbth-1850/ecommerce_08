@@ -99,6 +99,7 @@ vi:
     del_ok: "%{name} da bi xoa"
     login_admin: "Vui long dang nhap bang quan tri vien"
     you_sure: "Ban co chac khong?"
+    parent_self: "khong the cap con cua no"
   product:
     unit: "$"
     amount:

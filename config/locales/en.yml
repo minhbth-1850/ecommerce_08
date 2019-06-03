@@ -99,6 +99,7 @@ en:
     del_ok: "%{name} is deleted"
     login_admin: "Please login as admin"
     you_sure: "Are you sure?"
+    parent_self: "parent can't be self"
   product:
     unit: "$"
     amount:

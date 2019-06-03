@@ -45,14 +45,14 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    if @product.update_attribute(:activated, false)
-      flash[:success] = t "flash.del_ok", name: t("label.product")
-      check_del_product @product
-      redirect_to :products
-    else
-      flash[:danger] = t "flash.nil_object", name: t("label.product")
-      redirect_to root_path
+    Product.transaction do
+      del_product_soft! @product
     end
+    flash[:success] = t "flash.del_ok", name: t("label.product")
+    redirect_to :products
+  rescue StandardError
+    flash[:danger] = t "flash.nil_object", name: t("label.product")
+    redirect_to root_path
   end
 
   def import
@@ -69,7 +69,7 @@ class ProductsController < ApplicationController
     @product = Product.activates.find_by(id: params[:id])
     return if @product
 
-    flash[:danger] = t "flash.nil_object", name: "product"
+    flash[:danger] = t "flash.nil_object", name: t("label.product")
     redirect_to root_path
   end
 

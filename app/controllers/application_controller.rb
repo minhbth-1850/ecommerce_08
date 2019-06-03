@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
 
+  # users
   def logged_in_user
     return if logged_in?
 
@@ -21,6 +22,12 @@ class ApplicationController < ActionController::Base
     redirect_to login_path
   end
 
+  # products
+  def del_product_soft! product
+    cancel_order_product product
+    product.update_attribute(:activated, false)
+  end
+
   private
 
   def set_locale
@@ -34,5 +41,12 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     {locale: I18n.locale}
+  end
+
+  def cancel_order_product product
+    orders = product.orders.processing
+    orders.each do |order|
+      UserMailer.order_email(order.user, order).deliver_now if order.cancelled!
+    end
   end
 end
