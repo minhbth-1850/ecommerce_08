@@ -74,4 +74,8 @@
   <% end %>
 </div>
 <br>
+
+<%= render "facebook_comment", link: product_url(@product) %>
+
+<% javascript_include_tag "facebook" %>
 <%= javascript_include_tag "bootstrap-rating" %>

@@ -72,6 +72,7 @@ vi:
     add_menu: "+ Tao moi danh muc"
     template: "file mau"
     more_detail: "Chi tiet >>"
+    share: "Chia se"
   form:
     name: "Ten"
     email: "Email"
