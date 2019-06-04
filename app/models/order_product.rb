@@ -13,6 +13,12 @@ class OrderProduct < ApplicationRecord
       .limit(Settings.products.hot_page)
   end)
 
+  scope :chart_product, (lambda do
+    joins(:product)
+      .group(:name)
+      .sum(:quantity)
+  end)
+
   def decrement_product_quantity!
     product.decrement!(:quantity, quantity)
   end

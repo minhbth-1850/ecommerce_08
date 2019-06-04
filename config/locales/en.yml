@@ -46,6 +46,13 @@ en:
     receipt: "Receipt"
     none: "None"
     user: "User"
+    statistic: "Statistic"
+    day: "Day"
+    chart:
+      user_day: "User is created every day"
+      order_day: "Order is created in day of week"
+      order_cancel: "Order is cancelled every day"
+      product_most: "Product is ordered the most"
   link:
     home: "Home"
     help: "Help"
@@ -64,6 +71,7 @@ en:
     add_product: "+ Add new product"
     add_menu: "+ Add new category"
     template: "Template"
+    more_detail: "More Detail >>"
   form:
     name: "Name"
     email: "Email"
