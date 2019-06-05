@@ -8,7 +8,7 @@ module ProductsHelper
   end
 
   def load_categories
-    Category.all.map{|x| [x.name, x.id]}
+    Category.activates.map{|x| [x.name, x.id]}
   end
 
   def load_range_rate
@@ -67,12 +67,5 @@ module ProductsHelper
 
   def fake_sale_price price
     number_to_price price * Settings.products.fake_sale
-  end
-
-  def check_del_product product
-    orders = product.orders.processing
-    orders.each do |order|
-      UserMailer.order_email(order.user, order).deliver_now if order.cancelled!
-    end
   end
 end

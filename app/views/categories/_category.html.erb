@@ -1,0 +1,15 @@
+<tr>
+  <td><%= counter %></td>
+  <td><%= category.name %></td>
+  <td><%= category.get_parent_name %></td>
+
+  <td class="text-right">
+    <%= link_to edit_category_path(category), class: "btn btn-warning" do %>
+      <i class="fa fa-edit"></i>
+    <% end %>
+    <%= link_to category, method: :DELETE, data: {confirm: t("flash.you_sure")},
+      class: "btn btn-danger" do %>
+      <i class="fa fa-trash"></i>
+    <% end %>
+  </td>
+</tr>
