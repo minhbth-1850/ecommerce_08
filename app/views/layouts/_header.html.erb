@@ -45,6 +45,7 @@
                   <%= link_to t("label.user"), users_path, class: "dropdown-item" %>
                   <%= link_to t("label.product"), products_path, class: "dropdown-item" %>
                   <%= link_to t("label.receipt"), admin_orders_path, class: "dropdown-item" %>
+                  <%= link_to t("label.suggestion"), suggestions_path, class: "dropdown-item" %>
                 </div>
               </li>
             <% end %>
@@ -56,6 +57,7 @@
                 <%= link_to t("link.profile"), current_user, class: "dropdown-item" %>
                 <%= link_to t("link.setting"), edit_user_path(current_user), class: "dropdown-item" %>
                 <%= link_to t("label.history"), orders_path, class: "dropdown-item" %>
+                <%= link_to t("label.suggestion"), new_suggestion_path, class: "dropdown-item" %>
                 <%= link_to t("link.logout"), logout_path, method: :delete, class: "dropdown-item" %>
               </div>
             </li>

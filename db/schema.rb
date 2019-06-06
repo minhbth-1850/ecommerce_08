@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_063322) do
+ActiveRecord::Schema.define(version: 2019_06_04_075940) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -69,6 +69,36 @@ ActiveRecord::Schema.define(version: 2019_06_04_063322) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "sugesstions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.string "describe"
+    t.boolean "approved", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sugesstions_on_user_id"
+  end
+
+  create_table "suggestions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.string "describe"
+    t.boolean "approved", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_suggestions_on_user_id"
+  end
+
+  create_table "suggests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.string "describe"
+    t.boolean "approved", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_suggests_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -89,4 +119,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_063322) do
   add_foreign_key "products", "categories"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
+  add_foreign_key "sugesstions", "users"
+  add_foreign_key "suggestions", "users"
+  add_foreign_key "suggests", "users"
 end

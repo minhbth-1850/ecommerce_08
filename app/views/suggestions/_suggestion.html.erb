@@ -1,0 +1,27 @@
+<tr>
+  <td><%= counter %></td>
+  <td><%= suggestion.user_name %></td>
+  <td><%= suggestion.name %></td>
+  <td><%= suggestion.describe %></td>
+
+  <% if suggestion.approved %>
+    <td class="text-center"><i class="fa fa-check"></i></td>
+    <td class="text-center">
+    <%= link_to suggestion, method: :DELETE, data: {confirm: t("flash.you_sure")},
+      class: "btn btn-danger" do %>
+      <i class="fa fa-trash"></i>
+    <% end %>
+  </td>
+  <% else %>
+    <td class="text-center"><i class="fa fa-times"></i></td>
+    <td class="text-center">
+    <%= link_to edit_suggestion_path(suggestion), class: "btn btn-warning" do %>
+      <i class="fa fa-edit"></i>
+    <% end %>
+    <%= link_to suggestion, method: :DELETE, data: {confirm: t("flash.you_sure")},
+      class: "btn btn-danger" do %>
+      <i class="fa fa-trash"></i>
+    <% end %>
+  </td>
+  <% end %>
+</tr>

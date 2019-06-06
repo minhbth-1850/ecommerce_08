@@ -1,4 +1,8 @@
 vi:
+  filter_suggest:
+    all: "Tat ca"
+    approved: "Chap nhan"
+    not_approved: "Chua duyet"
   sort_user:
     created_at: "Moi nhat"
     role: "Quyen han"
@@ -53,6 +57,10 @@ vi:
       order_day: "Don hang theo ngay trong tuan"
       order_cancel: "Don hang bi huy moi ngay"
       product_most: "San pham duoc mua nhieu nhat"
+    suggestion: "De xuat"
+    approve: "Chap nhan"
+    filter: "Loc theo"
+    index: "STT"
   link:
     home: "Trang chu"
     help: "Tro giup"

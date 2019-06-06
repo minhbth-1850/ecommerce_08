@@ -1,4 +1,8 @@
 en:
+  filter_suggest:
+    all: "All"
+    approved: "Approved"
+    not_approved: "Not Approve"
   sort_user:
     created_at: "Created"
     role: "Role"
@@ -53,6 +57,10 @@ en:
       order_day: "Order is created in day of week"
       order_cancel: "Order is cancelled every day"
       product_most: "Product is ordered the most"
+    suggestion: "Suggestion"
+    approve: "Approve"
+    filter: "Filter"
+    index: "Index"
   link:
     home: "Home"
     help: "Help"
