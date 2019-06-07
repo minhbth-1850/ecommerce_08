@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     get "/payment", to: "cart#checkout"
     get "/sort_users", to: "users#sort"
     get "/statistic", to: "statistic#show"
+    get "/profile/:id", to: "users#profile", as: "profile_user"
 
+    resources :users, except: %i(new create show)
     resources :products
     resources :categories
     resources :orders, only: %i(new index create)
@@ -25,6 +27,11 @@ Rails.application.routes.draw do
       collection { post :import }
     end
 
-    devise_for :users
+    devise_for :users, controllers: {
+      registrations: "users/registrations"
+    }
+    devise_scope :user do
+      delete "/sign_out", to: "devise/sessions#destroy", as: :sign_out
+    end
   end
 end

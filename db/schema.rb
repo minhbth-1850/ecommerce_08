@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2019_06_07_035714) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.string "remember_token"
     t.boolean "activated", default: true
     t.integer "role", default: 0
     t.string "phone"

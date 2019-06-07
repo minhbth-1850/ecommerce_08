@@ -64,7 +64,7 @@ en:
   link:
     home: "Home"
     help: "Help"
-    login: "Login"
+    login: "Log In"
     logout: "Logout"
     signup: "Sign Up Now!"
     create: "Create"
@@ -126,3 +126,14 @@ en:
     order: "Order mail"
     request: "Request order from %{name}"
     check_order: "Check Order"
+  devise:
+    password:
+      change: "Change your password"
+    unlock:
+      title: "Resend unlock instructions"
+    confirm:
+      title: "Resend confirmation instructions"
+    link:
+      forgot_pass: "Forgot your password?"
+      receive_confirm: "Didn't receive confirmation instructions?"
+      receive_unlock: "Didn't receive unlock instructions?"

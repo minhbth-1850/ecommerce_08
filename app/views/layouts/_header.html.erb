@@ -42,7 +42,7 @@
                 </div>
                 <div class="dropdown-menu">
                   <%= link_to t("label.statistic"), statistic_path, class: "dropdown-item" %>
-                  <%= link_to t("label.user"), "", class: "dropdown-item" %>
+                  <%= link_to t("label.user"), users_path, class: "dropdown-item" %>
                   <%= link_to t("label.product"), products_path, class: "dropdown-item" %>
                   <%= link_to t("label.receipt"), admin_orders_path, class: "dropdown-item" %>
                   <%= link_to t("label.suggestion"), suggestions_path, class: "dropdown-item" %>
@@ -54,11 +54,12 @@
                 <%= link_to t("link.account"), "#", class: "nav-link dropdown-toggle active" %>
               </div>
               <div class="dropdown-menu">
-                <%= link_to t("link.profile"), "", class: "dropdown-item" %>
-                <%= link_to t("link.setting"), "", class: "dropdown-item" %>
+                <%= link_to t("link.profile"), profile_user_path(current_user), class: "dropdown-item" %>
+                <%= link_to t("link.setting"), edit_user_registration_path,
+                  class: "dropdown-item" %>
                 <%= link_to t("label.history"), orders_path, class: "dropdown-item" %>
                 <%= link_to t("label.suggestion"), new_suggestion_path, class: "dropdown-item" %>
-                <%= link_to t("link.logout"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                <%= link_to t("link.logout"), sign_out_path, method: :delete, class: "dropdown-item" %>
               </div>
             </li>
           <% else %>
