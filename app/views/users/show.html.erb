@@ -30,7 +30,7 @@
           <cite> <%= @user.role %> </cite>
         </h5>
         </br>
-        <%= link_to t("label.edit"), edit_user_path(@user), class: "btn btn-info" %>
+        <%= link_to t("label.edit"), edit_user_path(id: @user.id), class: "btn btn-info" %>
       </div>
     </div>
   </div>
