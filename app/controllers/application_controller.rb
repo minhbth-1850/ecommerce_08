@@ -1,9 +1,13 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+  # before_action :authenticate_user!
+
   include SessionsHelper
   include ProductsHelper
   include CartHelper
 
   before_action :set_locale
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   # users
   def logged_in_user
@@ -26,6 +30,14 @@ class ApplicationController < ActionController::Base
   def del_product_soft! product
     cancel_order_product product
     product.update_attribute(:activated, false)
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    added_attrs = [:name, :email, :password, :password_confirmation, :remember_me, :address, :phone]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
   private
