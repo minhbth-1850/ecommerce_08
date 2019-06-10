@@ -3,11 +3,6 @@ Rails.application.routes.draw do
     root "static_pages#home"
     get "/select", to: "static_pages#select"
     get "/search", to: "static_pages#search"
-    get "/signup", to: "users#new"
-    post "/signup", to: "users#create"
-    get "/login", to: "sessions#new"
-    post "/login", to: "sessions#create"
-    delete "/logout", to: "sessions#destroy"
     post "/shoping", to: "cart#shoping"
     get "/cart", to: "cart#show"
     delete "/cart", to: "cart#destroy"
@@ -16,7 +11,6 @@ Rails.application.routes.draw do
     get "/sort_users", to: "users#sort"
     get "/statistic", to: "statistic#show"
 
-    resources :users
     resources :products
     resources :categories
     resources :orders, only: %i(new index create)
@@ -30,5 +24,7 @@ Rails.application.routes.draw do
     resources :products do
       collection { post :import }
     end
+
+    devise_for :users
   end
 end
