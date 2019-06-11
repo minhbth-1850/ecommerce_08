@@ -7,8 +7,32 @@
         <%= resource_name.to_s.humanize %>
       </h1>
       </br>
-      <%= render "form" %>
-      </br>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="form-group">
+          <%= f.label :name, t("form.name") %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email, t("form.email") %>
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :phone, t("form.phone") %>
+          <%= f.telephone_field :phone, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :address, t("form.address") %>
+          <%= f.text_field :address, class: "form-control" %>
+        </div>
+        <div class="actions">
+          <%= f.submit yield(:button_text), class: "form-control btn-primary" %>
+        </div>
+      <% end %>
+      <br/>
+      <%= link_to t("devise.password.change"), change_password_users_path %>
     </div>
   </div>
 </div>

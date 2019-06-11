@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   include UsersHelper
   before_action :authenticate_user!
   before_action :logged_as_admin, only: %i(index destroy)
-  before_action :load_user, except: %i(index new create)
+  before_action :load_user, only: %i(show edit update destroy)
 
   def index
     option = load_params_user(params[:sort_id].to_i)
@@ -10,9 +10,7 @@ class UsersController < ApplicationController
       per_page: Settings.users.per_page
   end
 
-  def profile
-    render :show
-  end
+  def show; end
 
   def edit; end
 
@@ -36,11 +34,41 @@ class UsersController < ApplicationController
     end
   end
 
+  def change_password
+    @user = current_user
+  end
+
+  def update_password
+    @user = current_user
+    current_password = params[:user][:current_password]
+
+    unless @user.valid_password? current_password
+      @user.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
+      return render :change_password
+    end
+
+    unless params[:user][:password].present?
+      @user.errors.add(:password, :blank)
+      return render :change_password
+    end
+
+    if @user.update_with_password(password_params)
+      bypass_sign_in @user
+      flash[:success] = t "flash.profile_update"
+      redirect_to root_path
+    else
+      render :change_password
+    end
+  end
+
   private
 
   def user_params
-    params.require(:user).permit :name, :email, :phone, :address,
-      :password, :password_confirmation, :role
+    params.require(:user).permit :name, :email, :phone, :address, :role
+  end
+
+  def password_params
+    params.require(:user).permit :password, :password_confirmation, :current_password
   end
 
   def load_user

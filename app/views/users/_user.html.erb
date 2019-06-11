@@ -7,10 +7,14 @@
   <td><%= user.role %></td>
 
   <td class="text-right">
-    <%= link_to edit_user_path(id: user.id), class: "btn btn-warning" do %>
-      <i class="fa fa-edit"></i>
-    <% end %>
-    <% unless current_user? user %>
+    <% if current_user? user %>
+      <%= link_to edit_user_registration_path, class: "btn btn-warning" do %>
+        <i class="fa fa-edit"></i>
+      <% end %>
+    <% else %>
+      <%= link_to change_users_path(user), class: "btn btn-warning" do %>
+        <i class="fa fa-edit"></i>
+      <% end %>
       <%= link_to user_path(id: user.id), method: :DELETE, data: {confirm: t("flash.you_sure")},
         class: "btn btn-danger" do %>
         <i class="fa fa-trash"></i>

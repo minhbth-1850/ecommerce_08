@@ -10,9 +10,16 @@ Rails.application.routes.draw do
     get "/payment", to: "cart#checkout"
     get "/sort_users", to: "users#sort"
     get "/statistic", to: "statistic#show"
-    get "/profile/:id", to: "users#profile", as: "profile_user"
 
-    resources :users, except: %i(new create show)
+    resources :users, only: %i(index update destroy) do
+      collection {
+        get :change_password
+        patch :update_password
+        get "/profile/:id", to: "users#show", as: "profile"
+        get "/change/:id", to: "users#edit", as: "change"
+      }
+    end
+
     resources :products
     resources :categories
     resources :orders, only: %i(new index create)
