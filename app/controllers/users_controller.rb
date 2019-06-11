@@ -1,10 +1,8 @@
 class UsersController < ApplicationController
   include UsersHelper
-
-  before_action :logged_in_user, except: %i(new create)
+  before_action :authenticate_user!
   before_action :logged_as_admin, only: %i(index destroy)
   before_action :load_user, except: %i(index new create)
-  before_action :correct_user, only: :edit
 
   def index
     option = load_params_user(params[:sort_id].to_i)
@@ -12,23 +10,9 @@ class UsersController < ApplicationController
       per_page: Settings.users.per_page
   end
 
-  def new
-    @user = User.new
+  def profile
+    render :show
   end
-
-  def create
-    @user = User.new user_params
-    if @user.save
-      flash[:success] = t "label.welcome", logo: t("logo")
-      log_in @user
-
-      redirect_to @user
-    else
-      render :new
-    end
-  end
-
-  def show; end
 
   def edit; end
 
@@ -57,13 +41,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit :name, :email, :phone, :address,
       :password, :password_confirmation, :role
-  end
-
-  def correct_user
-    return if current_user.admin? || current_user?(@user)
-
-    flash[:danger] = t "flash.login_plz"
-    redirect_to root_path
   end
 
   def load_user

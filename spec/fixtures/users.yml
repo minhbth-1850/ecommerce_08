@@ -1,0 +1,8 @@
+user_one:
+  email: user1@gmail.com
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  confirmed_at: <%= Time.zone.now - 1.hour %>
+  confirmation_sent_at: <%= Time.zone.now - 2.hours %>
+  name: "David Silva"
+  phone: "01234567984"
+  address: "Manchester City"

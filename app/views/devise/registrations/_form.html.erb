@@ -1,0 +1,35 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="form-group">
+    <%= f.label :name, t("form.name") %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, t("form.email") %>
+    <%= f.email_field :email, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :phone, t("form.phone") %>
+    <%= f.telephone_field :phone, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address, t("form.address") %>
+    <%= f.text_field :address, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password, t("form.pass") %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br/>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation, t("form.pass_confirm") %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit yield(:button_text), class: "form-control btn-primary" %>
+  </div>
+<% end %>
