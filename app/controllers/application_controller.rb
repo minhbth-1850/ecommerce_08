@@ -1,29 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  # before_action :authenticate_user!
 
-  include SessionsHelper
   include ProductsHelper
   include CartHelper
+  include UsersHelper
 
   before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # users
-  def logged_in_user
-    return if logged_in?
-
-    store_location
-    flash[:danger] = t "flash.login_plz"
-    redirect_to login_path
-  end
-
   def logged_as_admin
     return if current_user.admin?
-
-    store_location
-    flash[:danger] = t "flash.login_admin"
-    redirect_to login_path
+    flash[:danger] = t("flash.login_admin")
+    redirect_to root_path
   end
 
   # products

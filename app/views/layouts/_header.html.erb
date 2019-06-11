@@ -54,7 +54,7 @@
                 <%= link_to t("link.account"), "#", class: "nav-link dropdown-toggle active" %>
               </div>
               <div class="dropdown-menu">
-                <%= link_to t("link.profile"), profile_user_path(current_user), class: "dropdown-item" %>
+                <%= link_to t("link.profile"), profile_users_path(current_user), class: "dropdown-item" %>
                 <%= link_to t("link.setting"), edit_user_registration_path,
                   class: "dropdown-item" %>
                 <%= link_to t("label.history"), orders_path, class: "dropdown-item" %>

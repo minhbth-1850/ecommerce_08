@@ -1,6 +1,6 @@
 module Admin
   class OrdersController < ApplicationController
-    before_action :logged_in_user, :logged_as_admin
+    before_action :authenticate_user!, :logged_as_admin
     before_action :load_order, only: %i(edit update)
 
     def index

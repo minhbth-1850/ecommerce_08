@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :logged_in_user, :load_product, only: %i(create update)
+  before_action :authenticate_user!, :load_product, only: %i(create update)
   before_action :load_review, only: :update
 
   def create

@@ -128,7 +128,7 @@ en:
     check_order: "Check Order"
   devise:
     password:
-      change: "Change your password"
+      change: "Change your password?"
     unlock:
       title: "Resend unlock instructions"
     confirm:

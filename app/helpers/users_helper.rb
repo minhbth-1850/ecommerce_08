@@ -18,4 +18,8 @@ module UsersHelper
     orders = user.orders.processing
     orders.each(&:cancelled!)
   end
+
+  def current_user? user
+    user == current_user
+  end
 end

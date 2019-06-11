@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :logged_in_user, :logged_as_admin, except: :show
+  before_action :authenticate_user!, :logged_as_admin, except: :show
   before_action :load_product, only: %i(show edit update destroy)
   before_action :load_review, only: :show
 
