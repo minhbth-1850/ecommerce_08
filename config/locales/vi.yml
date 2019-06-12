@@ -3,10 +3,6 @@ vi:
     all: "Tat ca"
     approved: "Chap nhan"
     not_approved: "Chua duyet"
-  sort_user:
-    created_at: "Moi nhat"
-    role: "Quyen han"
-    name: "Ten"
   order_state:
     processing: "Dang xu ly"
     failed: "That bai"
@@ -61,6 +57,7 @@ vi:
     approve: "Chap nhan"
     filter: "Loc theo"
     index: "STT"
+    role: "Quyen"
   link:
     home: "Trang chu"
     help: "Tro giup"

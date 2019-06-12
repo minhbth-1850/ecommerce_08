@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   before_action :load_user, only: %i(show edit update destroy)
 
   def index
-    option = load_params_user(params[:sort_id].to_i)
-    @users = User.activates.order_option(option).paginate page: params[:page],
+    @q = User.ransack(params[:q])
+    @users = @q.result.activates.paginate page: params[:page],
       per_page: Settings.users.per_page
   end
 

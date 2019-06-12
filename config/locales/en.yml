@@ -3,10 +3,6 @@ en:
     all: "All"
     approved: "Approved"
     not_approved: "Not Approve"
-  sort_user:
-    created_at: "Created"
-    role: "Role"
-    name: "Name"
   order_state:
     processing: "Process"
     failed: "Failed"
@@ -61,6 +57,7 @@ en:
     approve: "Approve"
     filter: "Filter"
     index: "Index"
+    role: "Role"
   link:
     home: "Home"
     help: "Help"

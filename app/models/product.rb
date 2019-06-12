@@ -18,7 +18,7 @@ class Product < ApplicationRecord
   scope :load_category, ->(ids){where category_id: ids if ids.any?}
   scope :find_ids, ->(ids){where id: ids}
   scope :activates, ->{where activated: true}
-  scope :search, ->(key){where("name LIKE ? or info LIKE ?", "%#{key}%", "%#{key}%")}
+  ransack_alias :seach_params, :name_or_info
 
   attr_accessor :amount_added
 
