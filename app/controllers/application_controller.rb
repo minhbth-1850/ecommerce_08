@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :store_user_location!, if: :storable_location?
 
   # users
   def logged_as_admin
@@ -21,6 +22,17 @@ class ApplicationController < ActionController::Base
     product.update_attribute(:activated, false)
   end
 
+  # cancan override
+  rescue_from CanCan::AccessDenied do |exception|
+    if user_signed_in?
+      flash[:danger] = exception.message
+      redirect_to root_path
+    else
+      flash[:danger] = t("flash.login_plz")
+      redirect_to new_user_session_path
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
@@ -28,6 +40,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+
+  def after_sign_in_path_for(resource_or_scope)
+    stored_location_for(resource_or_scope) || super
+  end
+
 
   private
 
@@ -49,5 +66,13 @@ class ApplicationController < ActionController::Base
     orders.each do |order|
       UserMailer.order_email(order.user, order).deliver_now if order.cancelled!
     end
+  end
+
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+  end
+
+  def store_user_location!
+    store_location_for(:user, request.fullpath)
   end
 end

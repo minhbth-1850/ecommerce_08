@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include UsersHelper
-  before_action :authenticate_user!
-  before_action :logged_as_admin, only: %i(index destroy)
+
+  authorize_resource
   before_action :load_user, only: %i(show edit update destroy)
 
   def index

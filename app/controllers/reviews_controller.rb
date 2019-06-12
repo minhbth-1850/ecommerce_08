@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, :load_product, only: %i(create update)
+  authorize_resource
+  before_action :load_product, only: %i(create update)
   before_action :load_review, only: :update
 
   def create

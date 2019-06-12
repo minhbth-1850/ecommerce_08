@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, :logged_as_admin, except: :show
+  authorize_resource
   before_action :load_product, only: %i(show edit update destroy)
   before_action :load_review, only: :show
 
@@ -76,7 +76,7 @@ class ProductsController < ApplicationController
     @reviews = @product.reviews.paginate page: params[:page],
       per_page: Settings.products.review_page
     @review = @product.reviews.find_by(user_id: current_user)
-    @review ||= Review.new
+    @review ||= Review.new(score: Settings.products.max_stars)
   end
 
   def product_params
