@@ -12,12 +12,12 @@ Rails.application.routes.draw do
     get "/statistic", to: "statistics#show"
 
     resources :users, only: %i(index update destroy) do
-      collection {
+      collection do
         get :change_password
         patch :update_password
         get "/profile/:id", to: "users#show", as: "profile"
         get "/change/:id", to: "users#edit", as: "change"
-      }
+      end
     end
 
     resources :products

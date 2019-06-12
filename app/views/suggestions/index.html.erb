@@ -23,8 +23,8 @@
         <thead>
           <tr>
             <th><%= t("label.index") %></th>
-            <th><%= t("label.user") %></th>
-            <th><%= t("label.product") %></th>
+            <th><%= sort_link @q, :user_name, t("label.user") %></th>
+            <th><%= sort_link @q, :name, t("label.product") %></th>
             <th><%= t("label.info") %></th>
             <th class="text-center"><%= t("label.approve") %></th>
             <th></th>

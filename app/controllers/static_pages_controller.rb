@@ -1,28 +1,29 @@
 class StaticPagesController < ApplicationController
+  before_action :load_search_text
+
   def home
     @products = load_all_products Settings.products.per_page
     @trend_products = load_trend_products
-    @search_text = ""
   end
 
   def select
     @trend_products = []
-    @search_text = ""
     @products = select_products(params[:category_id], params[:sort_id],
       Settings.products.per_page)
     render :home
   end
 
   def search
-    search_text = params[:search_text]
     @trend_products = []
-    @products = if search_text.blank?
-                  load_all_products Settings.products.per_page
-                else
-                  Product.search(search_text).activates
-                         .paginate page: params[:page],
-                           per_page: Settings.products.per_page
-                end
+    @products = @q.result.activates.paginate page: params[:page],
+                    per_page: Settings.products.per_page
     render :home
+  end
+
+  private
+
+  def load_search_text
+    @search_text = ""
+    @search_text = params[:q][:seach_params_cont] if params[:q]
   end
 end

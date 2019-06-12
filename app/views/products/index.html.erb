@@ -27,13 +27,13 @@
     <table class="table">
       <thead>
         <tr>
-          <th class="th-child-5">ID</th>
+          <th class="th-child-5"><%= t("label.index") %></th>
           <th class="th-child-5"><%= t("label.image") %></th>
-          <th class="th-child-20"><%= t("label.product") %></th>
+          <th class="th-child-20"><%= sort_link @q, :name, t("label.name") %></th>
           <th class="th-child-20"><%= t("label.info") %></th>
-          <th class="th-child-20"><%= t("label.category") %></th>
-          <th class="th-child-10"><%= t("label.price") %></th>
-          <th class="th-child-5"><%= t("label.quantity") %></th>
+          <th class="th-child-20"><%= sort_link @q, :category_id, t("label.category") %></th>
+          <th class="th-child-10"><%= sort_link @q, :price, t("label.price") %></th>
+          <th class="th-child-5"><%= sort_link @q, :quantity, t("label.quantity") %></th>
           <th></th>
         </tr>
       </thead>

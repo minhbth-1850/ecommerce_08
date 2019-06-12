@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
   before_action :load_review, only: :show
 
   def index
-    @products = load_all_products Settings.products.per_page
+    @products = @q.result.activates.paginate page: params[:page],
+      per_page: Settings.products.per_page
     respond_to do |format|
       format.html
       format.csv do

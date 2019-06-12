@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :store_user_location!, if: :storable_location?
+  before_action :load_search_form
 
   # users
   def logged_as_admin
@@ -74,5 +75,9 @@ class ApplicationController < ActionController::Base
 
   def store_user_location!
     store_location_for(:user, request.fullpath)
+  end
+
+  def load_search_form
+    @q = Product.ransack(params[:q])
   end
 end

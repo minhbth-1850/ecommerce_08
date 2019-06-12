@@ -6,12 +6,12 @@
 
         <nav class="navbar navbar-expand-sm justify-content-center">
           <div class="form-inline my-2 my-lg-0">
-            <%= form_tag search_path, method: :GET do %>
+            <%= search_form_for @q, url: search_path, method: :GET do |f| %>
               <div class="input-group input-group-sm">
-                <%= text_field_tag :search_text, params[:search_text], placeholder: t("label.search"),
-                  class: "form-control" %>
+                <%= f.text_field :seach_params_cont, value: @search_text,
+                  placeholder: t("label.search"), class: "form-control" %>
                 <div class="input-group-append">
-                  <%= button_tag :submit, class: "btn btn-secondary btn-number" do %>
+                  <%= f.submit "", class: "btn btn-secondary btn-number" do %>
                     <i class="fa fa-search"></i>
                   <% end %>
                 </div>

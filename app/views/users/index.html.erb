@@ -1,35 +1,18 @@
-<br>
 <div class="container">
   <div class="row justify-content-md-center">
     <h1><%= t("label.user") %></h1>
   </div>
   </br>
-  <%= form_for users_path, method: :GET do %>
-    <div class="container">
-      <div class="row">
-        <form class="form-inline">
-          <div class="col-md-3">
-            <label><%= t "label.sort" %> :</label>
-            <%= select_tag :sort_id, options_for_select(load_options_user, params[:sort_id]), {class: "form-control form-select"} %>
-          </div>
-          <div class="col-md-2">
-            <%= submit_tag t("label.search"), class: "btn btn-primary" %>
-          </div>
-        </form>
-      </div>
-      </br>
-    </div>
-  <% end %>
   <div class="row">
     <table class="table">
       <thead>
         <tr>
-          <th>ID</th>
-          <th><%= t("label.name") %></th>
-          <th><%= t("label.email") %></th>
-          <th><%= t("label.address") %></th>
-          <th><%= t("label.phone") %></th>
-          <th> Role</th>
+          <th><%= t("label.index") %></th>
+          <th><%= sort_link @q, :name, t("label.name") %></th>
+          <th><%= sort_link @q, :email, t("label.email") %></th>
+          <th><%= sort_link @q, :address, t("label.address") %></th>
+          <th><%= sort_link @q, :phone, t("label.phone") %></th>
+          <th><%= sort_link @q, :role, t("label.role") %></th>
 
           <th></th>
         </tr>

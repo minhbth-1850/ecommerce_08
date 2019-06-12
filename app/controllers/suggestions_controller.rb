@@ -5,10 +5,10 @@ class SuggestionsController < ApplicationController
   before_action :load_suggestion, only: %i(edit update destroy)
 
   def index
+    @q = Suggestion.ransack(params[:q])
     is_approve = load_value_filter params[:filter].to_i
-    @suggestions = Suggestion.approve(is_approve)
-                             .sort_approve
-                             .paginate page: params[:page]
+    @suggestions = @q.result.approve(is_approve)
+                            .paginate page: params[:page]
   end
 
   def new
