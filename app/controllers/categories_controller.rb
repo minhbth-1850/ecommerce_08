@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
-  before_action :logged_as_admin, :load_all_categories
+  authorize_resource
+  before_action :load_all_categories
   before_action :load_category, only: %i(edit update destroy)
 
   def index; end

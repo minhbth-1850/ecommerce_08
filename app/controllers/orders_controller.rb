@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: %i(index new create)
+  authorize_resource
 
   def index
     @orders = current_user.orders.latest.paginate(page: params[:page],

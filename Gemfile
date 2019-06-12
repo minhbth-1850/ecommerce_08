@@ -8,6 +8,7 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap"
 gem "bootstrap-sass"
 gem "bootstrap-will_paginate"
+gem "cancancan"
 gem "carrierwave"
 gem "chartkick"
 gem "coffee-rails", "~> 4.2"

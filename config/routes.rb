@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     patch "/cart", to: "cart#update"
     get "/payment", to: "cart#checkout"
     get "/sort_users", to: "users#sort"
-    get "/statistic", to: "statistic#show"
+    get "/statistic", to: "statistics#show"
 
     resources :users, only: %i(index update destroy) do
       collection {

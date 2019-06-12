@@ -1,6 +1,7 @@
 class SuggestionsController < ApplicationController
   include SuggestionsHelper
-  before_action :logged_as_admin, except: %i(new create)
+
+  authorize_resource
   before_action :load_suggestion, only: %i(edit update destroy)
 
   def index
