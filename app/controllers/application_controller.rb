@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   # products
   def del_product_soft! product
     cancel_order_product product
-    product.update_attribute(:activated, false)
+    product.destroy
   end
 
   # cancan override

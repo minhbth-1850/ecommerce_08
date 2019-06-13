@@ -7,7 +7,8 @@ class Category < ApplicationRecord
   validates :name, presence: true
   validate :check_parent
 
-  scope :activates, ->{where activated: true}
+  # paranoia solf delete
+  acts_as_paranoid
 
   def get_parent_name
     return "null" unless parent_id

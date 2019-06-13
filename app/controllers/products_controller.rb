@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   before_action :load_review, only: :show
 
   def index
-    @products = @q.result.activates.paginate page: params[:page],
+    @products = @q.result.paginate page: params[:page],
       per_page: Settings.products.per_page
     respond_to do |format|
       format.html
@@ -66,7 +66,7 @@ class ProductsController < ApplicationController
   private
 
   def load_product
-    @product = Product.activates.find_by(id: params[:id])
+    @product = Product.find_by(id: params[:id])
     return if @product
 
     flash[:danger] = t "flash.nil_object", name: t("label.product")

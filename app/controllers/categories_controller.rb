@@ -50,8 +50,8 @@ class CategoriesController < ApplicationController
   private
 
   def del_category_soft!
-    @category.update_attribute(:activated, false)
     @category.products.each{|p| del_product_soft!(p)}
+    @category.destroy
   end
 
   def load_category
@@ -62,7 +62,7 @@ class CategoriesController < ApplicationController
   end
 
   def load_all_categories
-    @categories = Category.activates.paginate page: params[:page]
+    @categories = Category.all.paginate page: params[:page]
   end
 
   def category_params

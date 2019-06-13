@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
 
   def search
     @trend_products = []
-    @products = @q.result.activates.paginate page: params[:page],
+    @products = @q.result.paginate page: params[:page],
                     per_page: Settings.products.per_page
     render :home
   end

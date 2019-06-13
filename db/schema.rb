@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_021919) do
+ActiveRecord::Schema.define(version: 2019_06_13_075103) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2019_06_13_021919) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "activated", default: true
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_categories_on_deleted_at"
     t.index ["parent_id"], name: "fk_rails_82f48f7407"
   end
 
@@ -27,6 +29,8 @@ ActiveRecord::Schema.define(version: 2019_06_13_021919) do
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_order_products_on_deleted_at"
     t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
   end
@@ -54,7 +58,9 @@ ActiveRecord::Schema.define(version: 2019_06_13_021919) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "activated", default: true
+    t.datetime "deleted_at"
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["deleted_at"], name: "index_products_on_deleted_at"
   end
 
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -107,7 +113,9 @@ ActiveRecord::Schema.define(version: 2019_06_13_021919) do
     t.datetime "locked_at"
     t.string "provider"
     t.string "uid"
+    t.datetime "deleted_at"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true

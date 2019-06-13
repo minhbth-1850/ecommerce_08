@@ -27,8 +27,10 @@ class User < ApplicationRecord
 
   before_save{email.downcase!}
 
-  scope :activates, ->{where activated: true}
   scope :order_option, ->(option){order(option => :DESC)}
+
+  # paranoia solf delete
+  acts_as_paranoid
 
   class << self
     def digest string

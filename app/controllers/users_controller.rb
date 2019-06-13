@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def index
     @q = User.ransack(params[:q])
-    @users = @q.result.activates.paginate page: params[:page],
+    @users = @q.result.paginate page: params[:page],
       per_page: Settings.users.per_page
   end
 
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if @user.update_attribute(:activated, false)
+    if @user.destroy
       flash[:success] = t "flash.del_ok", name: t("label.user")
       check_del_user @user
       redirect_to :users

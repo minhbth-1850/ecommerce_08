@@ -8,7 +8,7 @@ module ProductsHelper
   end
 
   def load_categories
-    Category.activates.map{|x| [x.name, x.id]}
+    Category.all.map{|x| [x.name, x.id]}
   end
 
   def load_range_rate
@@ -16,8 +16,7 @@ module ProductsHelper
   end
 
   def load_all_products per_page
-    Product.activates
-           .order_option(:created_at)
+    Product.order_option(:created_at)
            .includes(:category)
            .paginate(page: params[:page], per_page: per_page)
   end
@@ -31,7 +30,6 @@ module ProductsHelper
     option = load_params_option(sort_id.to_i)
     ids = load_category_chilrens(category_id)
     Product.includes(:category)
-           .activates
            .load_category(ids)
            .order_option(option)
            .paginate(page: params[:page], per_page: per_page)
@@ -40,7 +38,7 @@ module ProductsHelper
   def load_trend_products
     trends = OrderProduct.trend_product
     list_ids = trends.map(&:product_id)
-    Product.activates.find_ids(list_ids)
+    Product.find_ids(list_ids)
   end
 
   def load_category_chilrens id

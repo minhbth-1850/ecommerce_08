@@ -430,6 +430,8 @@ GEM
     ovirt-engine-sdk (4.3.0)
       json (>= 1, < 3)
     parallel (1.17.0)
+    paranoia (2.4.2)
+      activerecord (>= 4.0, < 6.1)
     parser (2.6.3.0)
       ast (~> 2.4.0)
     pg (0.20.0)
@@ -641,6 +643,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
+  paranoia
   pg (= 0.20.0)
   puma (~> 3.11)
   rails (~> 5.2.3)

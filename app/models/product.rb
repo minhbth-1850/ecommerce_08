@@ -17,8 +17,10 @@ class Product < ApplicationRecord
   scope :order_option, ->(option){order(option => :DESC)}
   scope :load_category, ->(ids){where category_id: ids if ids.any?}
   scope :find_ids, ->(ids){where id: ids}
-  scope :activates, ->{where activated: true}
   ransack_alias :seach_params, :name_or_info
+
+  # paranoia solf delete
+  acts_as_paranoid
 
   attr_accessor :amount_added
 

@@ -19,6 +19,9 @@ class OrderProduct < ApplicationRecord
       .sum(:quantity)
   end)
 
+  # paranoia solf delete
+  acts_as_paranoid
+
   def decrement_product_quantity!
     product.decrement!(:quantity, quantity)
   end
