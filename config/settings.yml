@@ -5,6 +5,10 @@ users:
   phone_min: 10
   phone_max: 15
   per_page: 10
+  default:
+    phone: "01234567891"
+    address: "Not Provide!"
+    avatar: "http://www.aiszambia.com/image/avatar.png"
 conditions:
   checked: "1"
   approved: "on"
