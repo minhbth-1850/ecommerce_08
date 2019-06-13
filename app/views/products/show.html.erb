@@ -75,6 +75,7 @@
 </div>
 <br>
 
+<%= social_share_button_tag(@product.name, url: product_path(@product), desc: @product.info) %>
 <%= render "facebook_comment", link: product_url(@product) %>
 
 <% javascript_include_tag "facebook" %>

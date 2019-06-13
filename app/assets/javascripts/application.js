@@ -19,3 +19,5 @@
 //= require_tree .
 //= require Chart.bundle
 //= require chartkick
+//= require social-share-button
+//= require social-share-button/wechat
