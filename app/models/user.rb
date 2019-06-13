@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable,
     :rememberable, :validatable, :confirmable, :lockable,
-    :timeoutable, :trackable
+    :timeoutable, :trackable, :omniauthable,
+    omniauth_providers: [:facebook, :google_oauth2]
 
   has_many :reviews, dependent: :destroy
   has_many :orders, dependent: :destroy
@@ -42,6 +43,31 @@ class User < ApplicationRecord
     def new_token
       SecureRandom.urlsafe_base64
     end
+
+    def new_with_session params, session
+      super.tap do |user|
+        if data = session["devise.facebook_data"] &&
+          session["devise.facebook_data"]["extra"]["raw_info"]
+          user.email = data["email"] if user.email.blank?
+        end
+      end
+    end
+
+    def from_omniauth auth
+      user = where(provider: auth.provider, uid: auth.uid).first
+      return user if user
+
+      user = User.new(email: auth.info.email,
+                  name: auth.info.name,
+                  phone: "012345678912",
+                  address: "Not Provide!",
+                  password: Devise.friendly_token[0,20],
+                  provider: auth.provider,
+                  uid: auth.uid)
+      user.skip_confirmation!
+      user.save
+      user
+    end
   end
 
   def remember
@@ -56,5 +82,12 @@ class User < ApplicationRecord
 
   def forget
     update_attribute :remember_digest, nil
+  end
+
+  def get_avatar
+    if provider == "facebook"
+     return "http://graph.facebook.com/#{uid}/picture?type=large"
+    end
+    "http://www.aiszambia.com/image/avatar.png"
   end
 end
