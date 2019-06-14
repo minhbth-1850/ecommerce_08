@@ -99,6 +99,7 @@ GEM
       activesupport (>= 3.0)
       deep_merge (~> 1.2.1)
       dry-validation (>= 0.12.2)
+    connection_pool (2.2.2)
     crass (1.0.4)
     declarative (0.0.10)
     declarative-option (0.1.0)
@@ -443,6 +444,8 @@ GEM
     public_suffix (3.1.0)
     puma (3.12.1)
     rack (2.0.7)
+    rack-protection (2.0.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -494,6 +497,7 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       optimist (~> 3.0)
+    redis (4.1.2)
     regexp_parser (1.5.1)
     representable (3.0.4)
       declarative (< 0.1.0)
@@ -558,6 +562,11 @@ GEM
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
     shellany (0.0.1)
+    sidekiq (5.2.7)
+      connection_pool (~> 2.2, >= 2.2.2)
+      rack (>= 1.5.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     signet (0.11.0)
       addressable (~> 2.3)
       faraday (~> 0.9)
@@ -654,6 +663,7 @@ DEPENDENCIES
   rubocop (~> 0.54.0)
   sass-rails (~> 5.0)
   selenium-webdriver
+  sidekiq
   social-share-button
   spring
   spring-watcher-listen (~> 2.0.0)

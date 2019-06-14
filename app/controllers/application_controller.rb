@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
   def cancel_order_product product
     orders = product.orders.processing
     orders.each do |order|
-      UserMailer.order_email(order.user, order).deliver_now if order.cancelled!
+      SendMailJob.perform_now order.id if order.cancelled!
     end
   end
 

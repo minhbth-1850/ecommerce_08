@@ -13,7 +13,7 @@ module Admin
     def update
       if @order.update_attributes order_params
         flash[:success] = t "flash.profile_update"
-        send_user_email
+        SendMailJob.perform_now @order.id
         redirect_to :admin_orders
       else
         render :edit
@@ -32,10 +32,6 @@ module Admin
 
     def order_params
       params.require(:order).permit :state
-    end
-
-    def send_user_email
-      UserMailer.order_email(@order.user, @order).deliver_now if @order.user
     end
   end
 end

@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
   end
 
   def send_emails
-    UserMailer.order_email(current_user, @order).deliver_now
-    UserMailer.admin_email(current_user, @order).deliver_now
+    SendMailJob.perform_now @order.id, false
+    SendMailJob.perform_now @order.id, true
   end
 end
