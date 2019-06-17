@@ -66,7 +66,7 @@ class ProductsController < ApplicationController
   private
 
   def load_product
-    @product = Product.find_by(id: params[:id])
+    @product = Product.friendly.find params[:id]
     return if @product
 
     flash[:danger] = t "flash.nil_object", name: t("label.product")

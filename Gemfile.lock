@@ -318,6 +318,8 @@ GEM
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
     formatador (0.2.5)
+    friendly_id (5.2.5)
+      activerecord (>= 4.0.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     google-api-client (0.23.9)
@@ -638,6 +640,7 @@ DEPENDENCIES
   faker (= 1.7.3)
   fog
   font-awesome-rails
+  friendly_id
   groupdate
   guard (= 2.13.0)
   guard-minitest (= 2.4.4)

@@ -72,7 +72,7 @@ class UsersController < ApplicationController
   end
 
   def load_user
-    @user = User.find_by id: params[:id]
+    @user = User.friendly.find params[:id]
     return @user if @user
 
     flash[:danger] = t "flash.nil_object", name: "User"

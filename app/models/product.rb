@@ -1,4 +1,8 @@
 class Product < ApplicationRecord
+  # Fiendly_id
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   belongs_to :category
   has_many :reviews, dependent: :destroy
   has_many :order_products, dependent: :destroy
